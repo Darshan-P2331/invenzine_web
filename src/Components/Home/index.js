@@ -1,0 +1,72 @@
+import React from 'react'
+import {Link} from 'react-router-dom'
+import firebase from '../../firebase'
+import { Container, Col, Row, Card } from 'react-bootstrap'
+
+
+
+ class Home extends React.Component {
+
+     constructor(props) {
+         super(props)
+         this.ref = firebase.firestore().collection('News')
+         this.unsubscribe = null
+        this.state = {
+            boards: []
+        }
+     }
+
+     onCollectionUpdate = (querySnapshot) => {
+        const boards = []
+         querySnapshot.forEach((docs) => {
+             const { title, desc, imgUrl } = docs.data()
+             boards.push({
+                 key: docs.id,
+                 docs,
+                 title,
+                 desc,
+                 imgUrl
+             })
+        });
+         this.setState({
+             boards
+         })
+     }
+
+     componentDidMount() {
+         this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate)
+     }
+
+     render() {
+         return (
+             <Container>
+                 <Row>
+                     {this.state.boards.map(board =>
+                     <Col lg={4} md={6}>
+                         <Link to={`/articleview/${board.key}`} style={{textDecoration: 'none'}}>
+                         <Card className='mb-5'>
+                             <Card.Img src={board.imgUrl} style={{height: "212px"}} />
+                             <Card.Body>
+                                <Card.Title style={{color: '#000'}}>
+                                     {board.title}
+                                </Card.Title>
+                                         <Card.Text style={{ color: '#6c757d'}}>
+                                    {board.desc}
+                                </Card.Text>
+                             </Card.Body>
+                         </Card>
+                         </Link>
+                     </Col>
+                     )}
+                 </Row>
+             </Container>
+         )
+     }
+    
+
+    logout() {
+        firebase.auth().signOut();
+    }
+}
+
+export default Home
