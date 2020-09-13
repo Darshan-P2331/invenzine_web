@@ -15,9 +15,9 @@ class ArticleView extends React.Component {
         }
     }
 
-    async componentDidMount() {
+    componentDidMount() {
         const ref = firebase.firestore().collection('News').doc(this.props.match.params.id)
-        await ref.get().then((doc) => {
+        ref.get().then((doc) => {
             if (doc.exists) {
                 this.setState({
                     board: doc.data(),
@@ -46,7 +46,8 @@ class ArticleView extends React.Component {
                     </Col>
                 </Row>
                 <Row className="my-5">
-                    {this.state.board.desc}
+                    {this.state.board.desc},
+                    {this.state.key}
                 </Row>
                 <Comment id={this.state.key} />
             </Container>
