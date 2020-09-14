@@ -13,16 +13,8 @@ class ArticleView extends React.Component {
         };
     }
 
-<<<<<<< HEAD
     componentDidMount() {
         const ref = firebase.firestore().collection('News').doc(this.props.match.params.id)
-=======
-    async componentDidMount() {
-        const ref = firebase
-            .firestore()
-            .collection("News")
-            .doc(this.props.match.params.id);
->>>>>>> 54a32243bc99de73de319f408245838c1560692a
         ref.get().then((doc) => {
             if (doc.exists) {
                 this.setState({
@@ -52,14 +44,7 @@ class ArticleView extends React.Component {
                         <h1>{this.state.board.title}</h1>
                     </Col>
                 </Row>
-<<<<<<< HEAD
-                <Row className="my-5">
-                    {this.state.board.desc},
-                    {this.state.key}
-                </Row>
-=======
                 <Row className="my-5">{this.state.board.desc}</Row>
->>>>>>> 54a32243bc99de73de319f408245838c1560692a
                 <Comment id={this.state.key} />
             </Container>
         );

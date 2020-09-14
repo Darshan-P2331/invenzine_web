@@ -1,69 +1,66 @@
 import React, { Component } from "react";
-import { Col, Button, Form } from "react-bootstrap";
+import { Col, Button, Card, InputGroup, FormControl } from "react-bootstrap";
+import firebase from '../../firebase'
 
 class Comment extends Component {
     constructor(props) {
-<<<<<<< HEAD
         super(props)
-=======
-        super(props);
->>>>>>> 54a32243bc99de73de319f408245838c1560692a
 
         this.state = {
             id: "",
             comment: "",
-            board: {},
+            boards: [],
         };
-        console.log(this.state.id);
     }
 
     static getDerivedStateFromProps(props, state) {
         return { id: props.id };
     }
-
-<<<<<<< HEAD
+    
     componentDidUpdate() {
-
+        const ref = firebase.firestore().collection('News/' + this.state.id + '/Comments')
+        ref.onSnapshot((querySnapshot) => {
+            const board = []
+            querySnapshot.forEach((docs) => {
+                board.push({
+                    Comment: docs.data().Comment,
+                    userName: docs.data().userName
+                })
+            })
+            this.setState({
+                boards: board
+            })
+        })
     }
-
-    addComment() {
-
+    addComment(text) {
+        const val = {
+            Comment: text,
+            userName: 'Test'
+        }
+        console.log(this.state.id)
+        firebase.firestore().collection('News/' + this.state.id + '/Comments').add(val)
+            .then(function (docRef) {
+                console.log("Document written with ID: ", docRef.id);
+            })
+            .catch(function (error) {
+                console.error("Error adding document: ", error);
+            });
     }
-=======
-    componentDidMount() {}
-
-    componentDidUpdate() {}
-
-    addComment() {}
->>>>>>> 54a32243bc99de73de319f408245838c1560692a
 
     render() {
         return (
             <Col>
-<<<<<<< HEAD
-                <Form onSubmit={this.addComment}>
-                    <Form.Group>
-                        <Form.Control type="text" value={this.state.comment} onChange={e => this.setState({ comment: e.target.value })} placeholder="Add Comment" />
-                    </Form.Group>
-                    <Button variant="outline-primary" type="submit">Submit</Button>
-=======
-                {this.state.id}
-                <Form onSubmit={this.addComment}>
-                    <Form.Group>
-                        <Form.Control
-                            type="text"
-                            value={this.state.comment}
-                            onChange={(e) =>
-                                this.setState({ comment: e.target.value })
-                            }
-                            placeholder="Add Comment"
-                        />
-                    </Form.Group>
-                    <Button variant="outline-primary" type="submit">
-                        Submit
-                    </Button>
->>>>>>> 54a32243bc99de73de319f408245838c1560692a
-                </Form>
+                <InputGroup>
+                    <FormControl placeholder="Add Comment" value={this.state.comment} onChange={e => this.setState({comment: e.target.value})} />
+                </InputGroup>
+                <Button on onClick={this.addComment(this.state.comment)}>Submit</Button>
+                {this.state.comment}
+                    {this.state.boards.map((board) => (
+                            <Card.Body>
+                                <Card.Title>{board.Comment}</Card.Title>
+                                <Card.Text>{board.userName}</Card.Text>
+                            </Card.Body>
+                    ))}
             </Col>
         );
     }
