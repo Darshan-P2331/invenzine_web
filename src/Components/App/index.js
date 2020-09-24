@@ -13,7 +13,7 @@ export default function App() {
     return (
         <Router>
         <div className="App">
-            <NavBar />
+            <Route path="*" component={NavBar} />
             <Switch>
                 <Route path="/" exact component={Home} />
                 <Route path="/signin" exact component={SignInScreen} />

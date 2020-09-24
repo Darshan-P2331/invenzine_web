@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Col, Button, Card, InputGroup, FormControl } from "react-bootstrap";
+import { Col, Button, Card, Form } from "react-bootstrap";
 import firebase from '../../firebase'
 
 class Comment extends Component {
@@ -11,55 +11,64 @@ class Comment extends Component {
             comment: "",
             boards: [],
         };
+        this.addComment = this.addComment.bind(this)
     }
 
     static getDerivedStateFromProps(props, state) {
         return { id: props.id };
     }
-    
+
     componentDidUpdate() {
-        const ref = firebase.firestore().collection('News/' + this.state.id + '/Comments')
-        ref.onSnapshot((querySnapshot) => {
+        const dbref = firebase.firestore().collection('News').doc(this.state.id).collection('Comments')
+        dbref.onSnapshot((querySnapshot) => {
             const board = []
             querySnapshot.forEach((docs) => {
-                board.push({
-                    Comment: docs.data().Comment,
-                    userName: docs.data().userName
-                })
+                board.push(docs.data())
             })
             this.setState({
                 boards: board
             })
         })
     }
-    addComment(text) {
-        const val = {
-            Comment: text,
-            userName: 'Test'
-        }
-        console.log(this.state.id)
-        firebase.firestore().collection('News/' + this.state.id + '/Comments').add(val)
-            .then(function (docRef) {
-                console.log("Document written with ID: ", docRef.id);
-            })
-            .catch(function (error) {
-                console.error("Error adding document: ", error);
-            });
+    addComment(e) {
+        e.preventDefault()
+        firebase.firestore().collection('News').doc(this.state.id).collection('Comments').add({
+            Comment: this.state.comment,
+            userName: firebase.auth().currentUser.displayName
+        }).then(function (docref) {
+            console.log(docref.id)
+        })
+        this.setState({
+            comment: ''
+        })
     }
 
     render() {
         return (
             <Col>
-                <InputGroup>
-                    <FormControl placeholder="Add Comment" value={this.state.comment} onChange={e => this.setState({comment: e.target.value})} />
-                </InputGroup>
-                <Button on onClick={this.addComment(this.state.comment)}>Submit</Button>
-                {this.state.comment}
+                { firebase.auth().currentUser !== null ?
+                    <Form onSubmit={this.addComment}>
+                        <Form.Group controlId='formBasicComment'>
+                            <Form.Control placeholder="Add Comment" value={this.state.comment} onChange={(e) => this.setState({ comment: e.target.value })} />
+                        </Form.Group>
+                        <Button type="submit">Submit</Button>
+                    </Form>
+                    :
+                    <Form>
+                        <Form.Group controlId='formBasicComment'>
+                            <Form.Control disabled placeholder="Login to add comments" value={this.state.comment} onChange={(e) => this.setState({ comment: e.target.value })} />
+                        </Form.Group>
+                        <Button type="submit" disabled>Submit</Button>
+                    </Form>
+                }
                     {this.state.boards.map((board) => (
+                        <div>
                             <Card.Body>
                                 <Card.Title>{board.Comment}</Card.Title>
                                 <Card.Text>{board.userName}</Card.Text>
                             </Card.Body>
+                            <hr/>
+                        </div>   
                     ))}
             </Col>
         );

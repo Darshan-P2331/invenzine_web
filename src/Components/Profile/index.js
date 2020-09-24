@@ -13,7 +13,6 @@ class Profile extends Component {
             photoUrl: "",
             isLogedIn: false
         }
-        console.log(this.props)
     }
 
     componentDidMount() {

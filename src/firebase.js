@@ -1,4 +1,4 @@
-import firebase from 'firebase'
+import * as firebase from 'firebase'
 
 
 const config = {
@@ -15,7 +15,9 @@ const config = {
 firebase.initializeApp(config)
 
 export function logout() {
-    firebase.auth().signOut()
+    firebase.auth().signOut().then(() => {
+        console.log('Logedout')
+    })
 
 }
 export default firebase

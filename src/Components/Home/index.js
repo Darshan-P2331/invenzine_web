@@ -21,7 +21,7 @@ class Home extends React.Component {
                 key: docs.id,
                 docs,
                 title,
-                desc,
+                desc: desc.slice(0, 35),
                 imgUrl,
             });
         });
