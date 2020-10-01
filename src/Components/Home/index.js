@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import firebase from "../../firebase";
 import { Container, Col, Row, Card } from "react-bootstrap";
+import NavBar from "../NavBar";
 
 class Home extends React.Component {
     constructor(props) {
@@ -36,6 +37,8 @@ class Home extends React.Component {
 
     render() {
         return (
+            <div>
+                <NavBar />
             <Container>
                 <Row>
                     {this.state.boards.map((board) => (
@@ -63,6 +66,7 @@ class Home extends React.Component {
                     ))}
                 </Row>
             </Container>
+            </div>
         );
     }
 

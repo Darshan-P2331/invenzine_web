@@ -5,18 +5,18 @@ import { Container, Col, Row, Image } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faThumbsUp, faThumbsDown, faCalendar } from '@fortawesome/free-solid-svg-icons'
 import "bootstrap/dist/css/bootstrap.min.css";
+import NavBar from "../NavBar";
 
 class ArticleView extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            board: {
-                like: [],
-                dislike: [],
-            },
+            board: {},
             key: "",
             liked: false,
             disliked: false,
+            like: [],
+            dislike: [],
             totallike: 0,
             totaldislike: 0
         };
@@ -29,18 +29,28 @@ class ArticleView extends React.Component {
         
         this.ref.get().then((doc) => {
             if (doc.exists) {
+                const { imgUrl, title, desc } = doc.data()
                 this.setState({
-                    board: doc.data(),
-                    totallike: this.state.board.like.length,
-                    totaldislike: this.state.board.dislike.length,
+                    board: {
+                        imgUrl,
+                        title,
+                        desc
+                    },
+                    like: doc.data().like,
+                    dislike: doc.data().dislike,
                     key: doc.id,
-                    liked: firebase.auth().currentUser !== null ? this.state.board.like.includes(firebase.auth().currentUser.uid) : false,
-                    disliked: firebase.auth().currentUser !== null ? this.state.board.dislike.includes(firebase.auth().currentUser.uid) : false,
+                    
                 });
                 
             } else {
                 console.log("No such document exists");
             }
+            this.setState({
+                liked: firebase.auth().currentUser !== null ? this.state.like.includes(firebase.auth().currentUser.uid) : false,
+                disliked: firebase.auth().currentUser !== null ? this.state.dislike.includes(firebase.auth().currentUser.uid) : false,
+                totallike: this.state.like.length,
+                totaldislike: this.state.dislike.length
+            })
         });
     }
 
@@ -121,6 +131,8 @@ class ArticleView extends React.Component {
 
     render() {
         return (
+            <div>
+                <NavBar />
             <Container>
                 <Row>
                     <Col md={6}>
@@ -143,6 +155,7 @@ class ArticleView extends React.Component {
                 <Row className="my-5">{this.state.board.desc}</Row>
                 <Comment id={this.state.key} />
             </Container>
+            </div>
         );
     }
 }
