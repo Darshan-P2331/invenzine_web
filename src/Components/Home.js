@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import firebase from "../../firebase";
+import firebase from "../firebase";
 import { Container, Col, Row, Card } from "react-bootstrap";
-import NavBar from "../NavBar";
+import NavBar from "./NavBar";
 
 class Home extends React.Component {
     constructor(props) {

@@ -1,9 +1,9 @@
 import React from 'react';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
-import firebase from '../../firebase';
+import firebase from '../firebase';
 import { Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import NavBar from '../NavBar';
+import NavBar from './NavBar';
 
 
 
@@ -18,11 +18,18 @@ class SignInScreen extends React.Component {
             firebase.auth.GoogleAuthProvider.PROVIDER_ID,
             firebase.auth.FacebookAuthProvider.PROVIDER_ID,
             firebase.auth.TwitterAuthProvider.PROVIDER_ID,
-            {
-                provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
-                signInMethod: firebase.auth.EmailAuthProvider.EMAIL_LINK_SIGN_IN_METHOD,
-            }
-        ]
+            firebase.auth.EmailAuthProvider.PROVIDER_ID
+        ],
+        callbacks: {
+            signInSuccessWithAuthResult: function (authResult, redirectUrl) {
+                var user = authResult.user
+                if (authResult.additionalUserInfo.isNewUser) {
+                    console.log("new signin");
+                    user.sendEmailVerification();
+                }
+                return true;
+            },
+        }
     };
     componentDidMount() {
         console.log(this.props)

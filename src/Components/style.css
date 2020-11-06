@@ -1,3 +1,10 @@
+.dropdown-menu {
+    background-color: #343a40;
+}
+.dropdown-item:hover {
+    background-color: black;
+}
+
 .card {
     width: 20rem;
     justify-content: center;

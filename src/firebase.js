@@ -14,10 +14,7 @@ const config = {
 
 firebase.initializeApp(config)
 
-export function logout() {
-    firebase.auth().signOut().then(() => {
-        console.log('Logedout')
-    })
+const storage = firebase.storage()
+const firestore = firebase.firestore()
 
-}
-export default firebase
+export {storage,firestore, firebase as default}
