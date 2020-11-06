@@ -2,7 +2,7 @@ import React from "react";
 import firebase, { firestore } from "../firebase";
 import { Container, Col, Row, Image, InputGroup, FormControl, Card, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faThumbsUp, faThumbsDown, faCalendar, faShare, faTrash } from '@fortawesome/free-solid-svg-icons'
+import { faThumbsUp, faThumbsDown, faCalendar, faShare, faTrash, faUser } from '@fortawesome/free-solid-svg-icons'
 import "bootstrap/dist/css/bootstrap.min.css";
 import NavBar from "./NavBar";
 import Share from "./Share";
@@ -34,12 +34,14 @@ class ArticleView extends React.Component {
         //Accessing Article
         this.ref.get().then((doc) => {
             if (doc.exists) {
-                const { imgUrl, title, desc } = doc.data()
+                const { imgUrl, title, desc, date, adminname } = doc.data()
                 this.setState({
                     board: {
                         imgUrl,
                         title,
-                        desc
+                        desc,
+                        date,
+                        adminname
                     },
                     like: doc.data().like,
                     dislike: doc.data().dislike,
@@ -207,14 +209,15 @@ class ArticleView extends React.Component {
                         </Col>
                         <Col md={6} className="mt-5">
                             <h1>{this.state.board.title}</h1>
-                            <h6 className="text-secondary"><FontAwesomeIcon icon={faCalendar} size="lg" /> {this.state.board.category}</h6>
+                            <h6 className="text-secondary"><FontAwesomeIcon icon={faCalendar} size="lg" /> {this.state.board.date}</h6>
+                            <h6 className="text-secondary"><FontAwesomeIcon icon={faUser} size="lg" /> {this.state.board.adminname}</h6>
                             <br />
                             <FontAwesomeIcon icon={faThumbsUp} size="lg" onClick={firebase.auth().currentUser !== null ? this.like : ''} style={this.state.liked ? { color: '#007bff' } : {}} /> {this.state.totallike}
                             <FontAwesomeIcon icon={faThumbsDown} size="lg" onClick={firebase.auth().currentUser !== null ? this.dislike : ''} style={this.state.disliked ? { color: '#007bff' } : {}} className="ml-3" /> {this.state.totaldislike}
                             <br />
                             <br />
                             {firebase.auth().currentUser !== null ?
-                            <FontAwesomeIcon icon={faShare} size='lg' onClick={() => this.setState({shareview: true})} /> :
+                            <FontAwesomeIcon icon={faShare} onClick={() => this.setState({shareview: true})} /> :
                             <div></div> 
                             }
                             

@@ -3,8 +3,8 @@ import { Card, Col, InputGroup, FormControl, Container, Button } from 'react-boo
 import firebase, { firestore } from '../firebase'
 
 class AddCategory extends Component {
-    constructor(props) {
-        super(props)
+    constructor() {
+        super()
 
         this.state = {
             boards: [],
@@ -40,7 +40,7 @@ class AddCategory extends Component {
     removeTag(value){
         firestore.collection('Tags').doc('newstag').update({
             tags: firebase.firestore.FieldValue.arrayRemove(value)
-        })
+        }).then(() => alert('Removed tag'))
     }
 
     render() {
