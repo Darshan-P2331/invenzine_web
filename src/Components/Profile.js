@@ -5,6 +5,8 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './style.css'
 import NavBar from './NavBar'
 import { Link } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCheckCircle } from '@fortawesome/free-solid-svg-icons'
 
 class Profile extends Component {
     constructor(props) {
@@ -13,9 +15,11 @@ class Profile extends Component {
             name: "",
             email: "",
             photoUrl: "",
-            isLogedIn: false
+            isLogedIn: false,
+            verified: false
         }
         this.resetPassword = this.resetPassword.bind(this)
+        this.verification = this.verification.bind(this)
     }
 
     componentDidMount() {
@@ -25,7 +29,8 @@ class Profile extends Component {
                     name: user.displayName,
                     email: user.email,
                     isLogedIn: true,
-                    photoUrl: user.photoURL
+                    photoUrl: user.photoURL,
+                    verified: user.emailVerified
                 })
             }
         })
@@ -35,6 +40,9 @@ class Profile extends Component {
         if (email !== null) {
             firebase.auth().sendPasswordResetEmail(email).then(() => alert("Check your Email"))
         }
+    }
+    verification() {
+        firebase.auth().currentUser.sendEmailVerification()
     }
 
     logout() {
@@ -51,7 +59,8 @@ class Profile extends Component {
                             <Card className="card" style={{marginTop: '50%'}}>
                                 <Image src={this.state.photoUrl || './Profile.png'} roundedCircle className="img" />
                                 <Card.Title className="username">{this.state.name}</Card.Title>
-                                <Card.Text className="email">{this.state.email ? this.state.email : ''}</Card.Text>
+                                <Card.Text className="email">{this.state.email ? this.state.email : ''}{this.state.verified ? <FontAwesomeIcon icon={faCheckCircle} color='green' title='verified' /> : <FontAwesomeIcon icon={faCheckCircle} color='red' title='not verified' />}</Card.Text>
+                                {!this.state.verified ? <Link onClick={this.verification}>Send verification link</Link> : ''}
                                 {this.state.email ? <Link onClick={e => this.resetPassword(this.state.email)}>Reset Password ?</Link> : ''}
                                 <Button className="btn btn-danger logout" onClick={this.logout} href='/profile'>Log Out</Button>
                             </Card>

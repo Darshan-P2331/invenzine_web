@@ -172,7 +172,8 @@ class editPost extends Component {
                                     imgUrl: fireBaseUrl,
                                     adminname: firebase.auth().currentUser.displayName,
                                     ImageFileName: this.state.file.name,
-                                    tags: this.state.tags
+                                    tags: this.state.tags,
+                                    date: Date().slice(4, 15)
                                 }).then(() => alert('Updated'))
                             })
                     })
@@ -182,7 +183,8 @@ class editPost extends Component {
             firestore.collection('News').doc(this.id).update({
                 title: this.state.title,
                 desc: this.state.desc,
-                tags: this.state.tags
+                tags: this.state.tags,
+                date: Date().slice(4, 15)
             }).then(() => {
                 this.setState({
                     progress: 100
@@ -235,7 +237,7 @@ class editPost extends Component {
                     <ProgressBar animated now={this.state.progress} label={`${this.state.progress}%`} />
                     <Image src={this.state.imgUrl} alt='post-image' width='300' className='align-center' />
                     <br/>
-                    <Button variant='outline-success' className='m-3' onClick={this.updatePost}><FontAwesomeIcon icon={faCheck} /> Post</Button>
+                    <Button variant='outline-success' className='m-3' onClick={this.updatePost}><FontAwesomeIcon icon={faCheck} /> Update</Button>
                 </Form>
             </Container>
         )

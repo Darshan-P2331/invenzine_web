@@ -16,10 +16,12 @@ class AdminNavBar extends Component {
     componentDidMount() {
         firebase.auth().onAuthStateChanged(user => {
             firestore.collection('Super').doc(user.email).get().then(info => {
-                this.setState({
-                    super: info.data().SuperAdmin ? info.data().SuperAdmin : false
-                })
-                console.log(this.state.super);
+                if (info.exists) {
+                    this.setState({
+                        super: info.data().SuperAdmin ? info.data().SuperAdmin : false
+                    })
+                    console.log(this.state.super);
+                }
             })
         })
     }

@@ -182,7 +182,10 @@ class AddPost extends Component {
                                 adminname: firebase.auth().currentUser.displayName,
                                 ImageFileName: this.state.file.name,
                                 likes: 0,
-                                dislikes: 0
+                                dislikes: 0,
+                                date: Date().slice(4, 15),
+                                like: [],
+                                dilike: []
                             }).then(() => alert('Completed'))
                         })
                 })
