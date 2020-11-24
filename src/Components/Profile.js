@@ -7,6 +7,7 @@ import NavBar from './NavBar'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons'
+import Footer from './Footer'
 
 class Profile extends Component {
     constructor(props) {
@@ -53,6 +54,10 @@ class Profile extends Component {
         return this.state.isLogedIn === true ? (
             <div>
                 <NavBar />
+                <div className='profile'>
+                    <video autoPlay muted loop>
+                        <source src='circuit.mp4' type='video/mp4' />
+                    </video>
                 <Container>
                     <div className="d-flex justify-content-center">
                         <div className="d-flex flex-column">
@@ -67,19 +72,27 @@ class Profile extends Component {
                         </div>
                     </div>
                 </Container>
+                </div>
+                <Footer/>
             </div>
         ) : (
                 <div>
+                    <video autoPlay muted loop>
+                        <source src='circuit.mp4' type='video/mp4' />
+                    </video>
                     <NavBar />
                     <Container>
-                        <div className="justify-content-center">
-                            <div className="d-flex flex-column button">
-                                <h3>Please Sign In to View your Profile</h3>
-                                <Button className="btn btn-success" href="/signin">Sign In</Button>
+                        <div className="text-white">
+                            <div className="d-flex justify-content-center">
+                                <div className='text-center' style={{marginTop: '40vh',marginBottom: '30vh'}}>
+                                    <h3>Please Sign In to View your Profile</h3>
+                                    <Button className="btn btn-success" href="/signin">Sign In</Button>
+                                </div>                                
                             </div>
 
                         </div>
                     </Container>
+                    <Footer/>
                 </div>
             )
     }

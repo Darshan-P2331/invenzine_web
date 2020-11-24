@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { Button, Card, Col, Container, Row } from 'react-bootstrap'
 import NavBar from './NavBar'
 import { firestore } from '../firebase';
+import Footer from './Footer';
 
 const theme = {
     input: {
@@ -83,7 +84,7 @@ export class Search extends Component {
 
     filterSearch(tag) {
         if (tag.length !== 0) {
-            firestore.collection('News').where('tags', "array-contains", tag).get().then(querysnapshot => {
+            firestore.collection('News').where('tags', "array-contains", tag).limit(10).get().then(querysnapshot => {
                 const boards = [];
                 querysnapshot.forEach((docs) => {
                     const { title, desc, imgUrl } = docs.data();
@@ -131,9 +132,12 @@ export class Search extends Component {
         }
         return (
             <div>
+                <video autoPlay muted loop>
+                    <source src='circuit.mp4' type='video/mp4' />
+                </video>
                 <NavBar />
                 <Container>
-                    <Row className='mt-5'>
+                    <Row className='mt-5 h-100'>
                         <Col md={6} lg={4}>
                             <div style={{ display: 'inline-flex' }}>
                                 <Autosuggest
@@ -178,13 +182,14 @@ export class Search extends Component {
                                 :
                                 <div className='d-flex justify-content-center'>
                                     <div className='d-flex flex-column'>
-                                        <h1 className='text-secondary' style={{ marginTop: '250%' }}>Empty</h1>
+                                        <h1 className='text-secondary' style={{ marginTop: '250%',marginBottom: '250%' }}>Empty</h1>
                                     </div>
                                 </div>
                             }
                         </Col>
                     </Row>
                 </Container>
+                <Footer/>
             </div>
         )
     }

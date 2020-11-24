@@ -145,7 +145,7 @@ class AddPost extends Component {
                                 tags: this.state.tags,
                                 like: [],
                                 dislike: [],
-                                date: Date().slice(4,15)
+                                date: firebase.firestore.FieldValue.serverTimestamp()
                             }).then(() => alert('Completed'))
                         })
                 })
@@ -183,7 +183,7 @@ class AddPost extends Component {
                                 ImageFileName: this.state.file.name,
                                 likes: 0,
                                 dislikes: 0,
-                                date: Date().slice(4, 15),
+                                date: firebase.firestore.FieldValue.serverTimestamp(),
                                 like: [],
                                 dilike: []
                             }).then(() => alert('Completed'))

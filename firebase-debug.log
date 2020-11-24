@@ -1,0 +1,205 @@
+[debug] [2020-11-22T07:04:56.829Z] ----------------------------------------------------------------------
+[debug] [2020-11-22T07:04:56.833Z] Command:       C:\Program Files (x86)\nodejs\node.exe C:\Users\Darshan\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2020-11-22T07:04:56.833Z] CLI Version:   8.16.2
+[debug] [2020-11-22T07:04:56.833Z] Platform:      win32
+[debug] [2020-11-22T07:04:56.833Z] Node Version:  v12.18.2
+[debug] [2020-11-22T07:04:56.836Z] Time:          Sun Nov 22 2020 12:34:56 GMT+0530 (India Standard Time)
+[debug] [2020-11-22T07:04:56.836Z] ----------------------------------------------------------------------
+[debug] [2020-11-22T07:04:56.836Z] 
+[debug] [2020-11-22T07:04:56.845Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-11-22T07:04:56.846Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  D:\Project\invenzine_web
+
+Before we get started, keep in mind:
+
+  * You are initializing in an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[info] i  .firebaserc already has a default project, using techmag-77e4a. 
+[debug] [2020-11-22T07:05:07.855Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2020-11-22T07:05:07.855Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2020-11-22T07:05:17.840Z] <<< HTTP RESPONSE 200 {"expires":"Mon, 01 Jan 1990 00:00:00 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","pragma":"no-cache","date":"Sun, 22 Nov 2020 07:05:16 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-11-22T07:05:17.880Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/techmag-77e4a  
+ 
+[debug] [2020-11-22T07:05:36.837Z] Server Error. socket hang up
+[debug] [2020-11-22T07:05:36.844Z] FirebaseError: Server Error. socket hang up
+    at Request._callback (C:\Users\Darshan\AppData\Roaming\npm\node_modules\firebase-tools\lib\api.js:32:31)
+    at self.callback (C:\Users\Darshan\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\request\request.js:185:22)
+    at Request.emit (events.js:315:20)
+    at Request.EventEmitter.emit (domain.js:482:12)
+    at Request.onRequestError (C:\Users\Darshan\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\request\request.js:877:8)
+    at ClientRequest.emit (events.js:327:22)
+    at ClientRequest.EventEmitter.emit (domain.js:482:12)
+    at TLSSocket.socketOnEnd (_http_client.js:453:9)
+    at TLSSocket.emit (events.js:327:22)
+    at TLSSocket.EventEmitter.emit (domain.js:482:12)
+    at endReadableNT (_stream_readable.js:1221:12)
+    at processTicksAndRejections (internal/process/task_queues.js:84:21)
+[error] 
+[error] Error: Failed to get Firebase project techmag-77e4a. Please make sure the project exists and your account has permission to access it.
+[debug] [2020-11-22T07:05:40.808Z] ----------------------------------------------------------------------
+[debug] [2020-11-22T07:05:40.811Z] Command:       C:\Program Files (x86)\nodejs\node.exe C:\Users\Darshan\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2020-11-22T07:05:40.812Z] CLI Version:   8.16.2
+[debug] [2020-11-22T07:05:40.812Z] Platform:      win32
+[debug] [2020-11-22T07:05:40.812Z] Node Version:  v12.18.2
+[debug] [2020-11-22T07:05:40.815Z] Time:          Sun Nov 22 2020 12:35:40 GMT+0530 (India Standard Time)
+[debug] [2020-11-22T07:05:40.816Z] ----------------------------------------------------------------------
+[debug] [2020-11-22T07:05:40.816Z] 
+[debug] [2020-11-22T07:05:40.829Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-11-22T07:05:40.830Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  D:\Project\invenzine_web
+
+Before we get started, keep in mind:
+
+  * You are initializing in an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[info] i  .firebaserc already has a default project, using techmag-77e4a. 
+[debug] [2020-11-22T07:05:47.509Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/techmag-77e4a  
+ 
+[debug] [2020-11-22T07:05:54.894Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sun, 22 Nov 2020 07:05:52 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] 
+=== Hosting Setup
+[info] 
+[info] Your public directory is the folder (relative to your project directory) that
+[info] will contain Hosting assets to be uploaded with firebase deploy. If you
+[info] have a build process for your assets, use your build's output directory.
+[info] 
+[debug] [2020-11-22T07:06:28.748Z] >>> HTTP REQUEST GET https://www.gstatic.com/firebasejs/releases.json  
+ 
+[debug] [2020-11-22T07:06:31.296Z] <<< HTTP RESPONSE 200 {"accept-ranges":"bytes","vary":"Accept-Encoding, Origin","content-type":"application/json","cross-origin-resource-policy":"cross-origin","content-length":"1411","date":"Sun, 22 Nov 2020 07:06:30 GMT","expires":"Sun, 22 Nov 2020 07:56:30 GMT","last-modified":"Fri, 20 Nov 2020 01:53:31 GMT","x-content-type-options":"nosniff","server":"sffe","x-xss-protection":"0","cache-control":"public, max-age=3000","age":"0","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\""}
+[debug] [2020-11-22T07:06:47.256Z] ----------------------------------------------------------------------
+[debug] [2020-11-22T07:06:47.260Z] Command:       C:\Program Files (x86)\nodejs\node.exe C:\Users\Darshan\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2020-11-22T07:06:47.261Z] CLI Version:   8.16.2
+[debug] [2020-11-22T07:06:47.261Z] Platform:      win32
+[debug] [2020-11-22T07:06:47.261Z] Node Version:  v12.18.2
+[debug] [2020-11-22T07:06:47.264Z] Time:          Sun Nov 22 2020 12:36:47 GMT+0530 (India Standard Time)
+[debug] [2020-11-22T07:06:47.264Z] ----------------------------------------------------------------------
+[debug] [2020-11-22T07:06:47.264Z] 
+[debug] [2020-11-22T07:06:47.279Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-11-22T07:06:47.280Z] > authorizing via signed-in user
+[debug] [2020-11-22T07:06:47.280Z] [iam] checking project techmag-77e4a for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2020-11-22T07:06:47.287Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/techmag-77e4a:testIamPermissions  
+ {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2020-11-22T07:06:52.957Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sun, 22 Nov 2020 07:06:50 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=1190","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-11-22T07:06:52.961Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/techmag-77e4a  
+ 
+[debug] [2020-11-22T07:07:06.125Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sun, 22 Nov 2020 07:07:04 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] 
+[info] === Deploying to 'techmag-77e4a'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2020-11-22T07:07:06.136Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/techmag-77e4a/versions  
+ {"config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2020-11-22T07:07:22.410Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sun, 22 Nov 2020 07:07:20 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] i  hosting[techmag-77e4a]: beginning deploy... 
+[info] i  hosting[techmag-77e4a]: found 20 files in build 
+[debug] [2020-11-22T07:07:22.469Z] [hosting] hash cache [YnVpbGQ] stored for 20 files
+[debug] [2020-11-22T07:07:22.470Z] [hosting][hash queue][FINAL] {"max":6,"min":0,"avg":0,"active":0,"complete":20,"success":20,"errored":0,"retried":0,"total":20,"elapsed":21}
+[debug] [2020-11-22T07:07:22.470Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/techmag-77e4a/versions/344dab082dbe9b28:populateFiles  
+ <request body omitted>
+[debug] [2020-11-22T07:07:27.628Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sun, 22 Nov 2020 07:07:26 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-11-22T07:07:27.636Z] [hosting][populate queue][FINAL] {"max":5173,"min":5173,"avg":5173,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":5179}
+[debug] [2020-11-22T07:07:27.637Z] [hosting] uploads queued: 1
+[debug] [2020-11-24T05:36:03.684Z] ----------------------------------------------------------------------
+[debug] [2020-11-24T05:36:03.687Z] Command:       C:\Program Files (x86)\nodejs\node.exe C:\Users\Darshan\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2020-11-24T05:36:03.687Z] CLI Version:   8.16.2
+[debug] [2020-11-24T05:36:03.687Z] Platform:      win32
+[debug] [2020-11-24T05:36:03.687Z] Node Version:  v12.18.2
+[debug] [2020-11-24T05:36:03.695Z] Time:          Tue Nov 24 2020 11:06:03 GMT+0530 (India Standard Time)
+[debug] [2020-11-24T05:36:03.695Z] ----------------------------------------------------------------------
+[debug] [2020-11-24T05:36:03.695Z] 
+[debug] [2020-11-24T05:36:03.706Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2020-11-24T05:36:03.746Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-11-24T05:36:03.746Z] > authorizing via signed-in user
+[debug] [2020-11-24T05:36:03.747Z] [iam] checking project techmag-77e4a for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2020-11-24T05:36:03.750Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2020-11-24T05:36:03.750Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2020-11-24T05:36:04.278Z] <<< HTTP RESPONSE 200 {"expires":"Mon, 01 Jan 1990 00:00:00 GMT","date":"Tue, 24 Nov 2020 05:36:04 GMT","pragma":"no-cache","cache-control":"no-cache, no-store, max-age=0, must-revalidate","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-11-24T05:36:04.291Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/techmag-77e4a:testIamPermissions  
+ {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2020-11-24T05:36:06.395Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2020-11-24T05:36:06.396Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2020-11-24T05:36:07.045Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 24 Nov 2020 05:36:06 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=1169","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-11-24T05:36:07.048Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/techmag-77e4a  
+ 
+[debug] [2020-11-24T05:36:18.943Z] Server Error. socket hang up
+[debug] [2020-11-24T05:36:18.947Z] FirebaseError: Server Error. socket hang up
+    at Request._callback (C:\Users\Darshan\AppData\Roaming\npm\node_modules\firebase-tools\lib\api.js:32:31)
+    at self.callback (C:\Users\Darshan\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\request\request.js:185:22)
+    at Request.emit (events.js:315:20)
+    at Request.EventEmitter.emit (domain.js:482:12)
+    at Request.onRequestError (C:\Users\Darshan\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\request\request.js:877:8)
+    at ClientRequest.emit (events.js:327:22)
+    at ClientRequest.EventEmitter.emit (domain.js:482:12)
+    at TLSSocket.socketOnEnd (_http_client.js:453:9)
+    at TLSSocket.emit (events.js:327:22)
+    at TLSSocket.EventEmitter.emit (domain.js:482:12)
+    at endReadableNT (_stream_readable.js:1221:12)
+    at processTicksAndRejections (internal/process/task_queues.js:84:21)
+[error] 
+[error] Error: Failed to get Firebase project techmag-77e4a. Please make sure the project exists and your account has permission to access it.
+[debug] [2020-11-24T05:36:32.736Z] ----------------------------------------------------------------------
+[debug] [2020-11-24T05:36:32.739Z] Command:       C:\Program Files (x86)\nodejs\node.exe C:\Users\Darshan\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2020-11-24T05:36:32.739Z] CLI Version:   8.16.2
+[debug] [2020-11-24T05:36:32.740Z] Platform:      win32
+[debug] [2020-11-24T05:36:32.740Z] Node Version:  v12.18.2
+[debug] [2020-11-24T05:36:32.741Z] Time:          Tue Nov 24 2020 11:06:32 GMT+0530 (India Standard Time)
+[debug] [2020-11-24T05:36:32.742Z] ----------------------------------------------------------------------
+[debug] [2020-11-24T05:36:32.742Z] 
+[debug] [2020-11-24T05:36:32.752Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-11-24T05:36:32.752Z] > authorizing via signed-in user
+[debug] [2020-11-24T05:36:32.753Z] [iam] checking project techmag-77e4a for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2020-11-24T05:36:32.757Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/techmag-77e4a:testIamPermissions  
+ {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2020-11-24T05:36:53.813Z] [iam] error while checking permissions, command may fail: FirebaseError: Server Error. connect ETIMEDOUT 172.217.163.138:443
+[debug] [2020-11-24T05:36:53.817Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/techmag-77e4a  
+ 
+[debug] [2020-11-24T05:37:33.630Z] Server Error. socket hang up
+[debug] [2020-11-24T05:37:33.635Z] FirebaseError: Server Error. socket hang up
+    at Request._callback (C:\Users\Darshan\AppData\Roaming\npm\node_modules\firebase-tools\lib\api.js:32:31)
+    at self.callback (C:\Users\Darshan\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\request\request.js:185:22)
+    at Request.emit (events.js:315:20)
+    at Request.EventEmitter.emit (domain.js:482:12)
+    at Request.onRequestError (C:\Users\Darshan\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\request\request.js:877:8)
+    at ClientRequest.emit (events.js:327:22)
+    at ClientRequest.EventEmitter.emit (domain.js:482:12)
+    at TLSSocket.socketOnEnd (_http_client.js:453:9)
+    at TLSSocket.emit (events.js:327:22)
+    at TLSSocket.EventEmitter.emit (domain.js:482:12)
+    at endReadableNT (_stream_readable.js:1221:12)
+    at processTicksAndRejections (internal/process/task_queues.js:84:21)
+[error] 
+[error] Error: Failed to get Firebase project techmag-77e4a. Please make sure the project exists and your account has permission to access it.

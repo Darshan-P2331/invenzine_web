@@ -34,13 +34,13 @@ class ArticleView extends React.Component {
         //Accessing Article
         this.ref.get().then((doc) => {
             if (doc.exists) {
-                const { imgUrl, title, desc, date, adminname } = doc.data()
+                const { imgUrl, title, desc, adminname } = doc.data()
                 this.setState({
                     board: {
                         imgUrl,
                         title,
                         desc,
-                        date,
+                        
                         adminname
                     },
                     like: doc.data().like,
@@ -195,7 +195,9 @@ class ArticleView extends React.Component {
     render() {
         return (
             <div>
+                <div className='bg-dark mb-5'>
                 <NavBar />
+                </div>
                 <Container>
                     <Row>
                         <Col md={6}>
@@ -222,7 +224,7 @@ class ArticleView extends React.Component {
                             }
                             
                         </Col>
-                        <Share show={this.state.shareview} onHide={() => this.setState({ shareview: false })} />
+                        <Share show={this.state.shareview} url={this.props.location.pathname} title={this.state.board.title} onHide={() => this.setState({ shareview: false })} />
                     </Row>
                     <Row className="my-5">{this.state.board.desc}</Row>
                     {

@@ -1,78 +1,134 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import firebase from "../firebase";
-import { Container, Col, Row, Card } from "react-bootstrap";
+import React, { Component } from "react";
+import { firestore } from "../firebase";
+import { Container, Card, Button, CardColumns } from "react-bootstrap";
 import NavBar from "./NavBar";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import 'bootstrap/dist/css/bootstrap.min.css'
+import Banner from "./Banner";
+import Footer from "./Footer";
+import { Link } from "react-router-dom";
 
-class Home extends React.Component {
+class Home extends Component {
     constructor(props) {
-        super(props);
-        this.ref = firebase.firestore().collection("News");
-        this.unsubscribe = null;
+        super(props)
+
         this.state = {
             boards: [],
-        };
+            lastViewed: null,
+            totalPost: 0
+        }
+        this.handleclick = this.handleclick.bind(this)
     }
 
-    onCollectionUpdate = (querySnapshot) => {
-        const boards = [];
-        querySnapshot.forEach((docs) => {
-            const { title, desc, imgUrl } = docs.data();
-            boards.push({
-                key: docs.id,
-                docs,
-                title,
-                desc: desc.slice(0, 35),
-                imgUrl,
+    async getData() {
+        const posts = await firestore.collection('News').orderBy("date", "asc").limit(10)
+        posts.onSnapshot(querySnapshot => {
+            this.setState({
+                lastViewed: querySnapshot.docs[querySnapshot.docs.length - 1]
+            })
+            const boards = []
+            querySnapshot.forEach((docs) => {
+                const { title, imgUrl, adminname, desc } = docs.data();
+                boards.push({
+                    key: docs.id,
+                    title,
+                    imgUrl,
+                    adminname,
+                    desc
+                });
             });
-        });
-        this.setState({
-            boards,
-        });
-    };
+            this.setState({
+                boards,
+            });
+        })
+    }
+
+    async getDataLater(lastViewed) {
+        const posts = await firestore.collection('News').orderBy("date", "desc").startAfter(lastViewed).limit(10)
+        posts.onSnapshot(querySnapshot => {
+            this.setState({
+                lastViewed: querySnapshot.docs[querySnapshot.docs.length - 1]
+            })
+            const boards = []
+            querySnapshot.forEach((docs) => {
+                const { title, imgUrl, adminname, desc } = docs.data();
+                boards.push({
+                    key: docs.id,
+                    title,
+                    imgUrl,
+                    desc,
+                    adminname,
+                });
+            });
+            this.setState({
+                boards: this.state.boards.concat(boards)
+            });
+        })
+    }
+    handleclick() {
+        this.getDataLater(this.state.lastViewed)
+    }
 
     componentDidMount() {
-        this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate);
+        firestore.collection('News').onSnapshot(querysnapshot => {
+            this.setState({
+                totalPost: querysnapshot.docs.length
+            })
+        })
+        this.getData()
     }
 
     render() {
         return (
             <div>
-                <NavBar />
-            <Container>
-                <Row>
-                    {this.state.boards.map((board) => (
-                        <Col key={board.key} lg={4} md={6}>
-                            <Link
-                                to={`/articleview/${board.key}`}
-                                style={{ textDecoration: "none" }}
-                            >
-                                <Card className="mb-5">
-                                    <Card.Img
-                                        src={board.imgUrl}
-                                        style={{ height: "212px" }}
-                                    />
-                                    <Card.Body>
-                                        <Card.Title style={{ color: "#000" }}>
-                                            {board.title}
-                                        </Card.Title>
-                                        <Card.Text style={{ color: "#6c757d" }}>
-                                            {board.desc}
-                                        </Card.Text>
-                                    </Card.Body>
-                                </Card>
-                            </Link>
-                        </Col>
-                    ))}
-                </Row>
-            </Container>
+                <header>
+                    <NavBar />
+                </header>
+            <main>
+                <Banner />
+                <div style={{ backgroundColor: '#fff', margin: '0', width: '100%' }}>
+                    <Container>
+                        <div className='latest-post text-center mb-0'>
+                            <div className='section-heading text-left'>
+                                <h5 className='heading'>Latest Post</h5>
+                            </div>
+                            <CardColumns>
+                                {
+                                    this.state.boards.map(board => (
+                                        <Card href={'/article' + board.key} className='main-card'>
+                                            <Link to={'/articleview/'+ board.key} style={{textDecoration: 'none', color: '#000'}}>
+                                            <Card.Img href={'/articleview/'+board.key} src={board.imgUrl} />
+                                            <Card.Body className='text-left'>
+                                                <Card.Title>{board.title} </Card.Title>
+                                                <footer className="blockquote-footer text-right">
+                                                    <small className="text-muted">
+                                                        By <cite title="Source Title">{board.adminname} </cite>
+                                                    </small>
+                                                </footer>
+                                                <Card.Text className='desc'>
+                                                    {board.desc}
+                                                </Card.Text>
+                                            </Card.Body>
+                                            </Link>
+                                        </Card>
+                                    ))
+                                }
+                            </CardColumns>
+                            {
+                                this.state.boards.length < this.state.totalPost ?
+                                    <Button variant="light" onClick={this.handleclick}>Load more <FontAwesomeIcon icon={faChevronDown} /></Button>
+                                    :
+                                    ''
+                            }
+                        </div>
+                    </Container>
+                </div>
+            </main>
+            <Footer />
             </div>
-        );
-    }
-
-    logout() {
-        firebase.auth().signOut();
+        )
     }
 }
 
-export default Home;
+export default Home

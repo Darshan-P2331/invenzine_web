@@ -43,22 +43,25 @@ class NavBar extends Component {
 
     render() {
         return (
-            <Navbar expand="md">
-                <Navbar.Brand style={{padding: '0', fontSize: '2rem'}}>INV<span style={{ color: 'rgba(255,216,0,0.9)'}}>E</span>NZINE</Navbar.Brand>
+            <Navbar expand="md" variant='dark'>
+                <Navbar.Brand style={{padding: '0', fontSize: '2rem', fontWeight: '500'}}>INVEN<span style={{ color: 'yellow'}}>Z</span>INE</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav" className="mr-2">
-                    <Nav className="ml-auto mr-3">
+                    <Nav>
                         <Nav.Link href="/">Home</Nav.Link>
                         <Nav.Link href="/profile">Profile</Nav.Link>
                         <Nav.Link href="/Search">Search</Nav.Link>
+                        <Nav.Link href="/about">About Us</Nav.Link>
+                        <Nav.Link href="/contact">Contact Us</Nav.Link>
                         {this.state.admin ?<Nav.Link href="/admin">Admin</Nav.Link> : <div/>}
                     </Nav>
+                    <div className='ml-auto'>
                     {!firebase.auth().currentUser ? 
                         <Button variant="outline-warning" href="/signin">Sign In</Button>
                         :
-                        <Button variant="danger" onClick={this.logout} href='/'>Log Out</Button>
+                        <Button variant="outline-danger" className='text-white' onClick={this.logout} href='/'>Log Out</Button>
                     }
-                    
+                    </div>
                 </Navbar.Collapse>
             </Navbar>
             
