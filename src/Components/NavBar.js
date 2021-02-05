@@ -43,7 +43,7 @@ class NavBar extends Component {
 
     render() {
         return (
-            <Navbar expand="md" variant='dark'>
+            <Navbar expand="md" style={{backgroundColor: '#000'}} variant='dark'>
                 <Navbar.Brand style={{padding: '0', fontSize: '2rem', fontWeight: '500'}}>INVEN<span style={{ color: 'yellow'}}>Z</span>INE</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav" className="mr-2">

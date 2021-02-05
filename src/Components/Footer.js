@@ -8,7 +8,7 @@ import '../Style.css'
 class Footer extends Component {
     render() {
         return (
-            <footer className="page-footer font-small text-white pt-4">
+            <footer style={{bottom: '0'}} className="page-footer font-small text-white pt-4">
 
 
                 <div className="container text-center text-md-left">
@@ -34,7 +34,7 @@ class Footer extends Component {
 
                             <h5 className='text-uppercase'>Contact Us</h5>
                             <a href="mailto:" target='_self' className='text-light'><FontAwesomeIcon icon={faEnvelope} /> Email</a><br />
-                            <span className='text-light'><FontAwesomeIcon icon={faPhone} /> Phone</span>
+                            <a href='tel:' className='text-light'><FontAwesomeIcon icon={faPhone} /> Phone</a>
                         </div>
 
                         <div className="col-md-3 mb-md-0 mb-3">
@@ -67,16 +67,16 @@ class Footer extends Component {
                             <h5 className='text-uppercase'>Follow Us</h5>
                             <ul class="list-unstyled">
                                 <li>
-                                    <a href="#!" className='text-white'><FontAwesomeIcon icon={faFacebookF} /></a>
+                                    <a href="#!" target='_blank' className='text-white'><FontAwesomeIcon icon={faFacebookF} /></a>
                                 </li>
                                 <li>
-                                    <a href="#!" className='text-white'><FontAwesomeIcon icon={faTwitter} /></a>
+                                    <a href="#!" target='_blank' className='text-white'><FontAwesomeIcon icon={faTwitter} /></a>
                                 </li>
                                 <li>
-                                    <a href="#!" className='text-white'><FontAwesomeIcon icon={faLinkedin} /></a>
+                                    <a href="#!" target='_blank' className='text-white'><FontAwesomeIcon icon={faLinkedin} /></a>
                                 </li>
                                 <li>
-                                    <a href="#!" className='text-white'><FontAwesomeIcon icon={faInstagram} /></a>
+                                    <a href="#!" target='_blank' className='text-white'><FontAwesomeIcon icon={faInstagram} /></a>
                                 </li>
                             </ul>
                         </div>

@@ -14,6 +14,8 @@ import Profile from './Components/Profile'
 import Search from './Components/Search'
 import AddCategory from './Components/AddCategory'
 import Register from './Components/Register'
+import AboutUs from './Components/AboutUs'
+import Footer from './Components/Footer'
 
 class Routes extends Component {
     constructor(props) {
@@ -57,6 +59,7 @@ class Routes extends Component {
                                 <Route path="/signin" exact component={SignInScreen} />
                                 <Route path="/articleview/:id" exact component={ArticleView} />
                                 <Route path="/profile" exact component={Profile} />
+                                <Route path="/about" exact component={AboutUs} />
                                 <Route path="/search" exact component={Search} />
                                 <Route path="/admin" exact component={() => <Dashboard super={this.state.super} />} />
                                 <Route path='/admin/addpost' exact component={AddPost} />
@@ -72,11 +75,13 @@ class Routes extends Component {
                             <Route path="/signin" exact component={SignInScreen} />
                             <Route path="/articleview/:id" exact component={ArticleView} />
                             <Route path="/profile" exact component={Profile} />
+                            <Route path="/about" exact component={AboutUs} />
                             <Route path="/search" exact component={Search} />
                             <Route path="/register" exact component={Register} />
                             <Route path='*' component={Home}/>
                         </Switch>
                 }
+                <Route path='/' component={Footer} />
             </div>
         )
     }

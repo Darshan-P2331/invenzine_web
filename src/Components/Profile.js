@@ -55,9 +55,6 @@ class Profile extends Component {
             <div>
                 <NavBar />
                 <div className='profile'>
-                    <video autoPlay muted loop>
-                        <source src='circuit.mp4' type='video/mp4' />
-                    </video>
                 <Container>
                     <div className="d-flex justify-content-center">
                         <div className="d-flex flex-column">
@@ -73,7 +70,6 @@ class Profile extends Component {
                     </div>
                 </Container>
                 </div>
-                <Footer/>
             </div>
         ) : (
                 <div>

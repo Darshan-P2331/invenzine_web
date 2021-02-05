@@ -132,9 +132,6 @@ export class Search extends Component {
         }
         return (
             <div>
-                <video autoPlay muted loop>
-                    <source src='circuit.mp4' type='video/mp4' />
-                </video>
                 <NavBar />
                 <Container>
                     <Row className='mt-5 h-100'>
@@ -156,7 +153,7 @@ export class Search extends Component {
                             {this.state.searched && this.state.boards.length !== 0 ?
                                 <Row>
                                     {this.state.boards.map((board) => (
-                                        <Col key={board.key}>
+                                        <Col lg={6}>
                                             <Link
                                                 to={`/articleview/${board.key}`}
                                                 style={{ textDecoration: "none" }}
@@ -189,7 +186,6 @@ export class Search extends Component {
                         </Col>
                     </Row>
                 </Container>
-                <Footer/>
             </div>
         )
     }

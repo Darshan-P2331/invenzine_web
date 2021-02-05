@@ -38,7 +38,7 @@ class SignInScreen extends React.Component {
         return (
             <div>
                 <NavBar />
-                <Container className="p-5">
+                <Container className="p-5 my-5">
                     <div className="justify-content-center">
                         <StyledFirebaseAuth uiConfig={this.uiConfig} firebaseAuth={firebase.auth()} />
                     </div>

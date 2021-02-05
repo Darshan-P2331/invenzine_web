@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Container, Row, Col, Card, NavDropdown } from "react-bootstrap";
-import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
+import { Container, Row, Col, Card, NavDropdown, Button } from "react-bootstrap";
+import { faTrash, faEdit, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import firebase, { firestore, storage } from '../firebase'
 import './style.css'
 import { Link } from 'react-router-dom'
@@ -12,49 +12,88 @@ export class Dashboard extends Component {
         super(props)
         this.state = {
             boards: [],
+            lastViewed: null,
+            totalPost: 0,
             admin: ''
         }
         this.delete = this.delete.bind(this)
+        this.handleclick = this.handleclick.bind(this)
+    }
+
+    async getData(user) {
+        var posts
+        if (this.props.super) {
+             posts = await firestore.collection('News').orderBy("date", "asc").limit(9)
+        }else{
+             posts = await firestore.collection('News').where('adminname','==',user).orderBy("date", "asc").limit(9)
+        }
+        posts.onSnapshot(querySnapshot => {
+            this.setState({
+                lastViewed: querySnapshot.docs[querySnapshot.docs.length - 1]
+            })
+            const boards = []
+            querySnapshot.forEach((docs) => {
+                const { title, imgUrl, adminname, ImageFileName } = docs.data();
+                boards.push({
+                    key: docs.id,
+                    title,
+                    imgUrl,
+                    adminname,
+                    ImageFileName
+                });
+            });
+            this.setState({
+                boards,
+            });
+        })
+    }
+
+    async getDataLater(lastViewed, user) {
+        const posts = await firestore.collection('News').where('adminname','==',user).orderBy("date", "desc").startAfter(lastViewed).limit(9)
+        posts.onSnapshot(querySnapshot => {
+            this.setState({
+                lastViewed: querySnapshot.docs[querySnapshot.docs.length - 1]
+            })
+            const boards = []
+            querySnapshot.forEach((docs) => {
+                const { title, imgUrl, adminname, desc, ImageFileName } = docs.data();
+                boards.push({
+                    key: docs.id,
+                    title,
+                    imgUrl,
+                    desc,
+                    adminname,
+                    ImageFileName
+                });
+            });
+            this.setState({
+                boards: this.state.boards.concat(boards)
+            });
+        })
+    }
+
+    handleclick() {
+        this.getDataLater(this.state.lastViewed,this.state.admin)
     }
 
     componentDidMount() {
         console.log(this.props.super);
         firebase.auth().onAuthStateChanged((user) => {
             if (this.props.super) {
-                firestore.collection('News').onSnapshot((querySnapshot) => {
-                    const boards = []
-                    querySnapshot.forEach((docs) => {
-                        const { title, likes, imgUrl, ImageFileName } = docs.data()
-                        boards.push({
-                            key: docs.id,
-                            title,
-                            likes,
-                            imgUrl,
-                            ImageFileName
-                        })
-                    });
+                firestore.collection('News').onSnapshot(querysnapshot => {
                     this.setState({
-                        boards
+                        totalPost: querysnapshot.docs.length
                     })
                 })
             } else {
-                firestore.collection('News').where("adminname", "==", user.displayName).onSnapshot((querySnapshot) => {
-                    const boards = []
-                    querySnapshot.forEach((docs) => {
-                        const { title, likes, imgUrl, ImageFileName } = docs.data()
-                        boards.push({
-                            key: docs.id,
-                            title,
-                            likes,
-                            imgUrl,
-                            ImageFileName
-                        })
-                    });
+                firestore.collection('News').where('adminname','==',user.displayName).onSnapshot(querysnapshot => {
                     this.setState({
-                        boards
+                        totalPost: querysnapshot.docs.length,
+                        admin: user.displayName
                     })
                 })
             }
+            this.getData(user.displayName)
         })
     }
 
@@ -62,6 +101,7 @@ export class Dashboard extends Component {
         storage.ref('/NewsImages/' + imgname).delete().then(function () {
             firestore.collection('News').doc(id).delete().then(() => {
                 console.log('Delete successful')
+                alert('Deleted successfully')
             })
         })
     }
@@ -73,26 +113,25 @@ export class Dashboard extends Component {
                     <Row>
                         {this.state.boards.map((board) => (
                             <Col lg={4} md={6} className='p-0'>
-                                <Card className='text-white mb-5' >
-                                    <Card.Img src={board.imgUrl} />
-                                    <Card.ImgOverlay style={{ backgroundColor: 'rgba(0, 0, 0, 0.3)' }}>
-                                        <Card.Title>
-                                            {board.title}
-                                        </Card.Title>
-                                        <Card.Subtitle>
-                                            {board.likes}
-                                        </Card.Subtitle>
-                                        <div style={{ marginLeft: '15.8rem', marginTop: '4.8rem' }}>
-                                            <NavDropdown title='' id="basic-nav-dropdown">
-                                                <NavDropdown.Item href="#action/3.1" className='text-danger' onClick={e => this.delete(board.key, board.ImageFileName)}><FontAwesomeIcon icon={faTrash} />&nbsp;Delete</NavDropdown.Item>
-                                                <Link to={'/admin/edit/' + board.key}><NavDropdown.Item href="#action/3.2" className='text-warning'><FontAwesomeIcon icon={faEdit} />&nbsp;Edit</NavDropdown.Item></Link>
-                                                <Link to={'/articleview/' + board.key} ><NavDropdown.Item href="#action/3.3" className='text-white'>View Comment</NavDropdown.Item></Link>
-                                            </NavDropdown>
-                                        </div>
-                                    </Card.ImgOverlay>
-                                </Card>
+                                <Card className='mb-5' style={{width: '300px'}}>
+                                    <Card.Img src={board.imgUrl}/>
+                                    <Card.Body>
+                                        <Card.Title>{board.title}</Card.Title>
+                                    </Card.Body>
+                                    <Card.Footer style={{justifyContent: 'space-between'}}>
+                                        <Button style={{borderRadius: '50%',padding: '10px 0', width: '50px',marginRight: '2em'}} variant='danger' onClick={e => this.delete(board.key, board.ImageFileName)}><FontAwesomeIcon icon={faTrash}/> </Button>
+                                        <Button style={{borderRadius: '50%',padding: '10px 0', width: '50px'}} variant='warning' href={'/admin/edit/' + board.key}><FontAwesomeIcon icon={faEdit} /> </Button>
+                                        <Button style={{borderRadius: '50%',padding: '10px 0', width: '50px',marginLeft: '2em'}} variant='outline-primary' href={'/articleview/' + board.key}><FontAwesomeIcon icon={faEdit} /> </Button>
+                                    </Card.Footer>
+                                </Card>                                
                             </Col>
                         ))}
+                        {
+                                this.state.boards.length < this.state.totalPost ?
+                                    <Button variant="light" onClick={this.handleclick}>Load more <FontAwesomeIcon icon={faChevronDown} /></Button>
+                                    :
+                                    ''
+                            }
 
                     </Row> :
                     <div className='d-flex justify-content-center'>

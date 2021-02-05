@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import '../Style.css'
 import { Card, Container, Row } from 'react-bootstrap'
 import { firestore } from '../firebase'
+import { Link } from 'react-router-dom'
 
 class Banner extends Component {
     constructor(props) {
@@ -38,12 +39,7 @@ class Banner extends Component {
 
     render() {
         return (
-            <div className='banner'>
-                <video autoPlay muted loop>
-                    <source 
-                     src='circuit.mp4'
-                     type='video/mp4' />
-                </video>
+            <div className='banner' style={{backgroundImage: 'url(./background.png)',backgroundAttachment: 'fixed'}}>
                 <Container className='pt-5 mb-5'>
                     <div className='title-section'>
                         <h1>INVEN<span style={{ color: 'yellow' }}>Z</span>INE</h1>
@@ -56,10 +52,11 @@ class Banner extends Component {
                         {
                             this.state.boards.map(board => (
                                 <div className='item'>
-                                    <Card className='card-block bg-transparent mx-3' style={{ flex: '1' }}>
+                                    <Link to={'/articleview/'+board.key} style={{textDecoration: 'none', color: '#fff'}}>
+                                    <Card className='card-block bg-transparent mx-3' style={{ flex: '1', minWidth: '268px' }}>
                                         <Card.Img src={board.imgUrl} alt='Post-1' />
                                         <Card.Body>
-                                            <Card.Title>{board.adminname} </Card.Title>
+                                            <Card.Title>{board.title} </Card.Title>
                                             <footer className="blockquote-footer">
                                                 <small className="text-white">
                                                     By <cite>{board.adminname} </cite>
@@ -67,6 +64,7 @@ class Banner extends Component {
                                             </footer>
                                         </Card.Body>
                                     </Card>
+                                    </Link>
                                 </div>
                             ))
                         }
