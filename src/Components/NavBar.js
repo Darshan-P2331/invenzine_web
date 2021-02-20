@@ -8,7 +8,8 @@ class NavBar extends Component {
         super()
         this.logout = this.logout.bind(this)
         this.state={
-            admin: false
+            admin: false,
+            super: false
         }
     }
 
@@ -25,7 +26,8 @@ class NavBar extends Component {
                 firestore.collection('Super').doc(user.email).get().then(info => {
                     if (info.exists) {
                         this.setState({
-                            admin: info.data().SuperAdmin
+                            admin: info.data().SuperAdmin,
+                            super: info.data().SuperAdmin,
                         })
                         console.log(info.data().SuperAdmin);
                     }
@@ -53,7 +55,7 @@ class NavBar extends Component {
                         <Nav.Link href="/Search">Search</Nav.Link>
                         <Nav.Link href="/about">About Us</Nav.Link>
                         <Nav.Link href="/contact">Contact Us</Nav.Link>
-                        {this.state.admin ?<Nav.Link href="/admin">Admin</Nav.Link> : <div/>}
+                        {this.state.admin ?<Nav.Link href={this.state.super? "/admin/addadmin" : "/admin"}>Admin</Nav.Link> : <div/>}
                     </Nav>
                     <div className='ml-auto'>
                     {!firebase.auth().currentUser ? 

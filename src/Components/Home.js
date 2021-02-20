@@ -6,7 +6,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Banner from "./Banner";
-import Footer from "./Footer";
 import { Link } from "react-router-dom";
 
 class Home extends Component {

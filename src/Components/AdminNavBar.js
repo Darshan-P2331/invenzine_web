@@ -41,10 +41,10 @@ class AdminNavBar extends Component {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav" className="mr-2">
                         <Nav fill variant='pills' className='ml-auto mr-2' defaultActiveKey={this.props.location.pathname}>
+                        {this.state.super ? <Nav.Link eventKey='/admin/addadmin' href='/admin/addadmin' ><FontAwesomeIcon icon={faUser} /> Admin</Nav.Link> : <div />}
                             <Nav.Link href='/admin' ><FontAwesomeIcon icon={faChartPie} /> Dashboard</Nav.Link>
                             <Nav.Link eventKey='/admin/addpost' href='/admin/addpost' ><FontAwesomeIcon icon={faPlus} /> Add Post</Nav.Link>
-                            <Nav.Link eventKey='/admin/draft' href='/admin/draft' ><FontAwesomeIcon icon={faFile} /> Draft</Nav.Link>
-                            {this.state.super ? <Nav.Link eventKey='/admin/addadmin' href='/admin/addadmin' ><FontAwesomeIcon icon={faUser} /> Admin</Nav.Link> : <div />}
+                            <Nav.Link eventKey='/admin/draft' href='/admin/draft' ><FontAwesomeIcon icon={faFile} /> Draft</Nav.Link>                            
                             {this.state.super ? <Nav.Link eventKey='/admin/addcategory' href='/admin/addcategory' ><FontAwesomeIcon icon={faTag} /> Category</Nav.Link> : <div />}
                         </Nav>
                         <Button variant="danger" onClick={this.logout} href='/'>Log Out</Button>

@@ -54,7 +54,7 @@ class Profile extends Component {
         return this.state.isLogedIn === true ? (
             <div>
                 <NavBar />
-                <div className='profile'>
+                <div className='profile' style={{backgroundColor: 'rgb(255,255,244)'}}>
                 <Container>
                     <div className="d-flex justify-content-center">
                         <div className="d-flex flex-column">

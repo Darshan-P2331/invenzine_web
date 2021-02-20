@@ -1,12 +1,11 @@
 import React from "react";
 import firebase, { firestore } from "../firebase";
-import { Container, Col, Row, Card } from "react-bootstrap";
+import { Container, Col, Row, Card, Media } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "bootstrap/dist/css/bootstrap.min.css";
 import NavBar from "./NavBar";
-import Footer from "./Footer";
 import PopularPosts from "./PopularPosts";
-import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
+import { faThumbsUp, faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import { EmailIcon, EmailShareButton, FacebookIcon, FacebookShareButton, WhatsappIcon, WhatsappShareButton } from "react-share";
 
 class ArticleView extends React.Component {
@@ -15,6 +14,7 @@ class ArticleView extends React.Component {
     this.state = {
       board: {
         desc: "",
+        tags: []
       },
       comments: [],
       liked: false,
@@ -54,13 +54,15 @@ class ArticleView extends React.Component {
     //Accessing Article
     this.ref.get().then((doc) => {
       if (doc.exists) {
-        const { imgUrl, title, desc, adminname, date } = doc.data();
+        const { imgUrl, title, desc, adminname, date, tags, aemail } = doc.data();
         this.setState({
           board: {
             imgUrl,
             title,
             desc,
+            tags,
             adminname,
+            aemail,
             date: date.toDate().toDateString()
           },
           like: doc.data().like,
@@ -192,13 +194,18 @@ class ArticleView extends React.Component {
                 <Card className="article-card" style={{ width: "auto" }}>
                   <Card.Body style={{ width: "auto" }}>
                     <div class="d-flex mx-3 my-3">
-                      <span class="badge badge-pill badge-color mr-2">
-                        tech
+                      {
+                        this.state.board.tags.map(tag =>
+                          <span class="badge badge-pill badge-color mr-2">
+                        {tag}
                       </span>
+                          )
+                      }
+                      
                     </div>
                     <h4 class="article-title">{this.state.board.title}</h4>
                     <span class="article-meta">
-                      {this.state.board.date} / {this.state.board.adminname}
+                      {this.state.board.date} / <a href={'/author/'+ this.state.board.aemail}>{this.state.board.adminname}</a>
                     </span>
                     <div className="d-felx">
                       <EmailShareButton  subject={this.state.board.title} url={window.location.href}>
@@ -263,28 +270,24 @@ class ArticleView extends React.Component {
                     </div>
                     <ol style={{ listStyle: "none", width: "100%" }}>
                       {this.state.comments.map((chat) => (
-                        <li class="single-comment">
-                          <div class="d-flex">
-                            <div class="comment-author"></div>
-                            <div class="comment-meta">
-                              <h6>{chat.userName}</h6>
-                              <p>{chat.Comment} </p>
-                            </div>
-                            <div></div>
-                          </div>
-                        </li>
+                        <Media>
+                          <img className='align-self-start mr-3' width={64} height={64} src='/comment-logo.png' />
+                          <Media.Body>
+                            <h5>{chat.userName}</h5>
+                            <p>{chat.Comment}</p>
+                          </Media.Body>
+                        </Media>
                       ))}
                     </ol>
                   </Card>
                 </div>
               </Col>
-              <Col lg={4}>
+              <Col lg={4} md={12}>
                 <PopularPosts />
               </Col>
             </Row>
           </Container>
         </div>
-        <Footer />
       </div>
     );
   }

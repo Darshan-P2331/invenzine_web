@@ -16,6 +16,7 @@ import AddCategory from './Components/AddCategory'
 import Register from './Components/Register'
 import AboutUs from './Components/AboutUs'
 import Footer from './Components/Footer'
+import Author from './Components/Author'
 
 class Routes extends Component {
     constructor(props) {
@@ -60,8 +61,9 @@ class Routes extends Component {
                                 <Route path="/articleview/:id" exact component={ArticleView} />
                                 <Route path="/profile" exact component={Profile} />
                                 <Route path="/about" exact component={AboutUs} />
+                                <Route path="/author/:email" exact component={Author} />
                                 <Route path="/search" exact component={Search} />
-                                <Route path="/admin" exact component={() => <Dashboard super={this.state.super} />} />
+                                <Route path={this.state.super? "/admin/:id" : "/admin"} exact component={() => <Dashboard super={this.state.super} />} />
                                 <Route path='/admin/addpost' exact component={AddPost} />
                                 <Route path='/admin/draft' exact component={Draft} />
                                 <Route path='/admin/edit/:id' exact component={editPost} />
@@ -76,6 +78,7 @@ class Routes extends Component {
                             <Route path="/articleview/:id" exact component={ArticleView} />
                             <Route path="/profile" exact component={Profile} />
                             <Route path="/about" exact component={AboutUs} />
+                            <Route path="/author/:email" exact component={Author} />
                             <Route path="/search" exact component={Search} />
                             <Route path="/register" exact component={Register} />
                             <Route path='*' component={Home}/>

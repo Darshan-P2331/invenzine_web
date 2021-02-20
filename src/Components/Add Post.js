@@ -139,12 +139,11 @@ class AddPost extends Component {
                                 desc: this.state.desc,
                                 imgUrl: fireBaseUrl,
                                 adminname: firebase.auth().currentUser.displayName,
+                                aemail: firebase.auth().currentUser.email,
                                 ImageFileName: this.state.file.name,
                                 likes: 0,
-                                dislikes: 0,
                                 tags: this.state.tags,
                                 like: [],
-                                dislike: [],
                                 date: firebase.firestore.FieldValue.serverTimestamp()
                             }).then(() => alert('Completed'))
                         })
@@ -180,12 +179,12 @@ class AddPost extends Component {
                                 desc: this.state.desc,
                                 imgUrl: fireBaseUrl,
                                 adminname: firebase.auth().currentUser.displayName,
+                                aemail: firebase.auth().currentUser.email,
                                 ImageFileName: this.state.file.name,
+                                tags: this.state.tags,
                                 likes: 0,
-                                dislikes: 0,
                                 date: firebase.firestore.FieldValue.serverTimestamp(),
                                 like: [],
-                                dilike: []
                             }).then(() => alert('Completed'))
                         })
                 })

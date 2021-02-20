@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card } from "react-bootstrap";
+import { Card, Col, Row } from "react-bootstrap";
 import { firestore } from "../firebase";
 
 export default class PopularPosts extends Component {
@@ -36,7 +36,8 @@ export default class PopularPosts extends Component {
 
   render() {
     return (
-      <div>
+      <Row>
+      <Col md={6}>
         <Card className="popular-post-card" style={{ padding: "30px" }}>
           <div>
             <div class="section-heading text-left">
@@ -59,7 +60,8 @@ export default class PopularPosts extends Component {
             ))}
           </div>
         </Card>
-      </div>
+      </Col>
+      </Row>
     );
   }
 }

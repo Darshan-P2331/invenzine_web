@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Container, Row, Col, Card, NavDropdown, Button } from "react-bootstrap";
+import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import { faTrash, faEdit, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import firebase, { firestore, storage } from '../firebase'
 import './style.css'
-import { Link } from 'react-router-dom'
 
 export class Dashboard extends Component {
 
@@ -23,7 +22,7 @@ export class Dashboard extends Component {
     async getData(user) {
         var posts
         if (this.props.super) {
-             posts = await firestore.collection('News').orderBy("date", "asc").limit(9)
+            posts = await firestore.collection('News').where('adminname','==',this.props.match.params.id).orderBy("date", "asc").limit(9)
         }else{
              posts = await firestore.collection('News').where('adminname','==',user).orderBy("date", "asc").limit(9)
         }
@@ -49,7 +48,7 @@ export class Dashboard extends Component {
     }
 
     async getDataLater(lastViewed, user) {
-        const posts = await firestore.collection('News').where('adminname','==',user).orderBy("date", "desc").startAfter(lastViewed).limit(9)
+        const posts = await firestore.collection('News').where('adminname','==',user).orderBy("date", "asc").startAfter(lastViewed).limit(9)
         posts.onSnapshot(querySnapshot => {
             this.setState({
                 lastViewed: querySnapshot.docs[querySnapshot.docs.length - 1]
@@ -80,7 +79,7 @@ export class Dashboard extends Component {
         console.log(this.props.super);
         firebase.auth().onAuthStateChanged((user) => {
             if (this.props.super) {
-                firestore.collection('News').onSnapshot(querysnapshot => {
+                firestore.collection('News').where('adminname','==',this.props.match.params.id).onSnapshot(querysnapshot => {
                     this.setState({
                         totalPost: querysnapshot.docs.length
                     })

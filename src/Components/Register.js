@@ -52,7 +52,8 @@ class Register extends Component {
             PhoneNumber: this.state.PhoneNumber,
             IDProof: this.state.IDProof,
             Occupation: this.state.Occupation,
-            ApprovalStatus: false
+            ApprovalStatus: false,
+            Subscribers: []
         }).then(() => {
             alert('Submited')
             this.props.history.push('/')

@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import { Button, Card, Col, Container, Row } from 'react-bootstrap'
 import NavBar from './NavBar'
 import { firestore } from '../firebase';
-import Footer from './Footer';
 
 const theme = {
     input: {
