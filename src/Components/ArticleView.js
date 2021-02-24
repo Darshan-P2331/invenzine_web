@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "bootstrap/dist/css/bootstrap.min.css";
 import NavBar from "./NavBar";
 import PopularPosts from "./PopularPosts";
-import { faThumbsUp, faUserCircle } from "@fortawesome/free-solid-svg-icons";
+import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import { EmailIcon, EmailShareButton, FacebookIcon, FacebookShareButton, WhatsappIcon, WhatsappShareButton } from "react-share";
 
 class ArticleView extends React.Component {
@@ -271,7 +271,7 @@ class ArticleView extends React.Component {
                     <ol style={{ listStyle: "none", width: "100%" }}>
                       {this.state.comments.map((chat) => (
                         <Media>
-                          <img className='align-self-start mr-3' width={64} height={64} src='/comment-logo.png' />
+                          <img className='align-self-start mr-3' alt="Comment-img" width={64} height={64} src='/comment-logo.png' />
                           <Media.Body>
                             <h5>{chat.userName}</h5>
                             <p>{chat.Comment}</p>

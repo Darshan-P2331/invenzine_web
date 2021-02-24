@@ -1,7 +1,15 @@
-import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
+import { faChevronDown, faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { Component } from "react";
-import { Button, Card, CardColumns, Col, Container, Row } from "react-bootstrap";
+import {
+  Button,
+  Card,
+  CardColumns,
+  Col,
+  Container,
+  Row,
+} from "react-bootstrap";
+import { Link } from "react-router-dom";
 import firebase, { firestore } from "../firebase";
 import NavBar from "./NavBar";
 
@@ -18,8 +26,9 @@ export default class Author extends Component {
       totalPost: 0,
     };
     this.email = this.props.match.params.email;
-    this.ref= firestore.collection("LocalAdmins").doc(this.email)
-    this.handleclick = this.handleclick.bind(this);
+    this.ref = firestore.collection("LocalAdmins").doc(this.email);
+    this.handleclick = this.handleclick.bind(this)
+    this.Subscribe = this.Subscribe.bind(this)
   }
 
   async getInfo() {
@@ -27,14 +36,17 @@ export default class Author extends Component {
     adminData.get().then((details) => {
       this.setState({
         details: details.data(),
-        totalfollowers: details.data().Subscribers.length
+        totalfollowers: details.data().Subscribers.length,
+        subscribed: firebase.auth().currentUser !== null
+        ? details.data().Subscribers.includes(firebase.auth().currentUser.email)
+        : false,
       });
-      this.getPosts(this.email)
+      this.getPosts(this.email);
+      console.log(this.state.subscribed);
     });
   }
 
   async getPosts(adminname) {
-      console.log(adminname);
     const posts = await firestore
       .collection("News")
       .where("aemail", "==", adminname)
@@ -46,7 +58,6 @@ export default class Author extends Component {
       const boards = [];
       querySnapshot.forEach((docs) => {
         const { title, imgUrl, adminname, desc } = docs.data();
-        console.log(docs.data());
         boards.push({
           key: docs.id,
           title,
@@ -55,7 +66,6 @@ export default class Author extends Component {
           desc,
         });
       });
-      console.log(boards);
       this.setState({
         boards,
       });
@@ -93,8 +103,9 @@ export default class Author extends Component {
     this.getDataLater(this.state.lastViewed, this.state.adminname);
   }
 
-  Subscribe(){
+  Subscribe() {
     const uemail = firebase.auth().currentUser.email;
+    console.log(this.state.subscribed);
     if (this.state.subscribed) {
       this.ref
         .update({
@@ -109,7 +120,7 @@ export default class Author extends Component {
     } else {
       this.ref
         .update({
-          Subscribers: firebase.firestore.FieldValue.arrayUnion(uemail)
+          Subscribers: firebase.firestore.FieldValue.arrayUnion(uemail),
         })
         .then(() =>
           this.setState({
@@ -118,6 +129,7 @@ export default class Author extends Component {
           })
         );
     }
+    console.log("Success");
   }
 
   componentDidMount() {
@@ -132,26 +144,34 @@ export default class Author extends Component {
           <Row>
             <Col lg={4}>
               <div className="justify-content-center pt-5 mt-4 flex-column text-center">
-                <FontAwesomeIcon icon={faUserCircle} size="8x" color='yellow' />
+                <FontAwesomeIcon icon={faUserCircle} size="8x" color="yellow" />
                 <Card.Title>{this.state.details.Username}</Card.Title>
-                <Button>Subscribe</Button>
+                <p className='text-muted'>{this.state.totalfollowers}</p>
+                <Button variant={this.state.subscribed? "secondary" : "primary"} onClick={this.Subscribe}>{this.state.subscribed? "UnSubscribe" : "Subscribe"}</Button>
               </div>
             </Col>
             <Col lg={8}>
-              
-                <Row>
-                  <CardColumns className='py-5'>
+              <Row>
+                <CardColumns className="py-5">
                   {this.state.boards.map((board) => (
                     <Card>
+                      <Link to={'/articleview/'+ board.key} style={{textDecoration: 'none', color: '#000'}}>
                       <Card.Img src={board.imgUrl} />
                       <Card.Body>
                         <Card.Title>{board.title}</Card.Title>
                       </Card.Body>
+                      </Link>
                     </Card>
-                    ))}
-                  </CardColumns>
-                </Row>
-              
+                  ))}
+                </CardColumns>
+                {this.state.boards.length < this.state.totalPost ? (
+                  <Button variant="light" onClick={this.handleclick}>
+                    Load more <FontAwesomeIcon icon={faChevronDown} />
+                  </Button>
+                ) : (
+                  ""
+                )}
+              </Row>
             </Col>
           </Row>
         </Container>
