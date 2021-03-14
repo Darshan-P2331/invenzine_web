@@ -3,41 +3,47 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import {
   faTrash,
-  faCheck,
+  faEdit,
   faChevronDown,
+  faComment,
 } from "@fortawesome/free-solid-svg-icons";
-import firebase, { firestore, storage } from "../firebase";
+import { firestore, storage } from "../firebase";
 import "./style.css";
+import Comments from "./Comments";
 
-export class Draft extends Component {
-  constructor() {
-    super();
+export default class Dashboard1 extends Component {
+  constructor(props) {
+    super(props);
     this.state = {
       boards: [],
-      totalPost: 0,
       lastViewed: null,
+      totalPost: 0,
+      admin: "",
+      show: false,
+      id: null,
     };
     this.delete = this.delete.bind(this);
-    this.post = this.post.bind(this);
+    this.handleclick = this.handleclick.bind(this);
   }
 
   async getData(user) {
     const posts = await firestore
-      .collection("DraftNews")
-      .where("adminname", "==", user)
+      .collection("News")
+      .where("aemail", "==", user)
+      .orderBy("date", "desc")
       .limit(9);
-
     posts.onSnapshot((querySnapshot) => {
       this.setState({
         lastViewed: querySnapshot.docs[querySnapshot.docs.length - 1],
       });
       const boards = [];
       querySnapshot.forEach((docs) => {
-        const { title, imgUrl, ImageFileName } = docs.data();
+        const { title, imgUrl, adminname, ImageFileName } = docs.data();
         boards.push({
           key: docs.id,
           title,
           imgUrl,
+          adminname,
           ImageFileName,
         });
       });
@@ -49,8 +55,9 @@ export class Draft extends Component {
 
   async getDataLater(lastViewed, user) {
     const posts = await firestore
-      .collection("DraftNews")
-      .where("adminname", "==", user)
+      .collection("News")
+      .where("aemail", "==", user)
+      .orderBy("date", "desc")
       .startAfter(lastViewed)
       .limit(9);
     posts.onSnapshot((querySnapshot) => {
@@ -59,11 +66,13 @@ export class Draft extends Component {
       });
       const boards = [];
       querySnapshot.forEach((docs) => {
-        const { title, imgUrl, ImageFileName } = docs.data();
+        const { title, imgUrl, adminname, desc, ImageFileName } = docs.data();
         boards.push({
           key: docs.id,
           title,
           imgUrl,
+          desc,
+          adminname,
           ImageFileName,
         });
       });
@@ -78,54 +87,32 @@ export class Draft extends Component {
   }
 
   componentDidMount() {
-    firebase.auth().onAuthStateChanged((user) => {
-      firestore
-        .collection("DraftNews")
-        .where("adminname", "==", user.displayName)
-        .onSnapshot((querysnapshot) => {
-          this.setState({
-            totalPost: querysnapshot.docs.length,
-          });
-        });
-      this.getData(user.displayName);
-    });
-  }
-
-  post(id) {
     firestore
-      .collection("DraftNews")
-      .doc(id)
-      .get()
-      .then((doc) => {
-        if (doc.exists) {
-          firestore.collection("News").add(doc.data()).then(this.delete(id));
-        }
+      .collection("News")
+      .where("aemail", "==", this.props.match.params.aemail)
+      .onSnapshot((querysnapshot) => {
+        this.setState({
+          totalPost: querysnapshot.docs.length,
+          admin: this.props.match.params.aemail,
+        });
+        this.getData(this.props.match.params.aemail);
       });
   }
 
   delete(id, imgname) {
-    if (imgname) {
-      storage
-        .ref("/NewsImages/" + imgname)
-        .delete()
-        .then(function () {
-          firestore
-            .collection("DraftNews")
-            .doc(id)
-            .delete()
-            .then(() => {
-              console.log("Delete successful");
-            });
-        });
-    } else {
-      firestore
-        .collection("DraftNews")
-        .doc(id)
-        .delete()
-        .then(() => {
-          console.log("Delete successful");
-        });
-    }
+    storage
+      .ref("/NewsImages/" + imgname)
+      .delete()
+      .then(function () {
+        firestore
+          .collection("News")
+          .doc(id)
+          .delete()
+          .then(() => {
+            console.log("Delete successful");
+            alert("Deleted successfully");
+          });
+      });
   }
 
   render() {
@@ -156,11 +143,29 @@ export class Draft extends Component {
                       <FontAwesomeIcon icon={faTrash} />{" "}
                     </Button>
                     <Button
-                      variant="outline-success"
-                      onClick={(e) => this.post(board.key)}
+                      style={{
+                        borderRadius: "50%",
+                        padding: "10px 0",
+                        width: "50px",
+                      }}
+                      variant="warning"
+                      href={"/admin/edit/" + board.key}
                     >
-                      <FontAwesomeIcon icon={faCheck} />
-                      Post{" "}
+                      <FontAwesomeIcon icon={faEdit} />{" "}
+                    </Button>
+                    <Button
+                      style={{
+                        borderRadius: "50%",
+                        padding: "10px 0",
+                        width: "50px",
+                        marginLeft: "2em",
+                      }}
+                      variant="outline-primary"
+                      onClick={() =>
+                        this.setState({ show: true, id: board.key })
+                      }
+                    >
+                      <FontAwesomeIcon icon={faComment} />{" "}
                     </Button>
                   </Card.Footer>
                 </Card>
@@ -173,20 +178,23 @@ export class Draft extends Component {
             ) : (
               ""
             )}
-            
           </Row>
         ) : (
           <div className="d-flex justify-content-center">
-            <div className="d-flex flex-column h-100">
-              <h1 className="text-secondary" style={{ marginTop: "250%",marginBottom: '100%' }}>
+            <div className="d-flex flex-column">
+              <h1 className="text-secondary" style={{ marginTop: "250%",marginBottom: "100%" }}>
                 Empty
               </h1>
             </div>
           </div>
         )}
+        <Comments
+          show={this.state.show}
+          onHide={() => this.setState({ show: false })}
+          id={this.state.id}
+          super={true}
+        />
       </Container>
     );
   }
 }
-
-export default Draft;

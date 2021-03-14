@@ -21,7 +21,7 @@ class Home extends Component {
     }
 
     async getData() {
-        const posts = await firestore.collection('News').orderBy("date", "asc").limit(9)
+        const posts = await firestore.collection('News').orderBy("date", "desc").limit(9)
         posts.onSnapshot(querySnapshot => {
             this.setState({
                 lastViewed: querySnapshot.docs[querySnapshot.docs.length - 1]
@@ -44,7 +44,7 @@ class Home extends Component {
     }
 
     async getDataLater(lastViewed) {
-        const posts = await firestore.collection('News').orderBy("date", "asc").startAfter(lastViewed).limit(9)
+        const posts = await firestore.collection('News').orderBy("date", "desc").startAfter(lastViewed).limit(9)
         posts.onSnapshot(querySnapshot => {
             this.setState({
                 lastViewed: querySnapshot.docs[querySnapshot.docs.length - 1]

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container, Form, Image, InputGroup, ProgressBar, Button } from 'react-bootstrap'
+import { Container, Form, InputGroup, ProgressBar, Button } from 'react-bootstrap'
 import { faCheck, faWindowClose } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import firebase, { firestore, storage } from '../firebase'
@@ -78,7 +78,8 @@ class editPost extends Component {
             progress: 0,
             tags: [],
             value: '',
-            suggestions: []
+            suggestions: [],
+            imagePreviewUrl: ""
         }
         this.handleChange = this.handleChange.bind(this)
         this.updatePost = this.updatePost.bind(this)
@@ -173,7 +174,7 @@ class editPost extends Component {
                                     adminname: firebase.auth().currentUser.displayName,
                                     ImageFileName: this.state.file.name,
                                     tags: this.state.tags,
-                                    date: Date().slice(4, 15)
+                                    date: firebase.firestore.FieldValue.serverTimestamp(),
                                 }).then(() => alert('Updated'))
                             })
                     })
@@ -184,7 +185,7 @@ class editPost extends Component {
                 title: this.state.title,
                 desc: this.state.desc,
                 tags: this.state.tags,
-                date: Date().slice(4, 15)
+                date: firebase.firestore.FieldValue.serverTimestamp(),
             }).then(() => {
                 this.setState({
                     progress: 100
@@ -193,6 +194,20 @@ class editPost extends Component {
             })
         }
     }
+
+    //Image Section
+  photoUpload = (e) => {
+    e.preventDefault();
+    const reader = new FileReader();
+    const file = e.target.files[0];
+    reader.onloadend = () => {
+      this.setState({
+        file: file,
+        imagePreviewUrl: reader.result,
+      });
+    };
+    reader.readAsDataURL(file);
+  };
 
     render() {
         const { value, suggestions } = this.state
@@ -207,7 +222,22 @@ class editPost extends Component {
             <Container>
                 <Form className='float-center pt-5'>
                     <Form.Group>
-                        <Form.File id='img' label='Post Image' name='file' onChange={e => this.handleChange(e.target.files[0], 'file')} ></Form.File>
+                    <div className="form-file">
+              <label
+                htmlFor="photo-upload"
+                className="custom-file-upload-post fas form-file-label"
+              >
+                <div className="img-wrap-post img-upload-post">
+                  <img for="photo-upload" alt="#" src={this.state.imagePreviewUrl || this.state.imgUrl} />
+                </div>
+                <input
+                  id="photo-upload"
+                  type="file"
+                  className="form-control-file"
+                  onChange={this.photoUpload}
+                />
+              </label>
+            </div>
                     </Form.Group>
                     <Form.Group controlId='emailcontrol'>
                         <Form.Label>Title</Form.Label>
@@ -235,7 +265,6 @@ class editPost extends Component {
                         <Form.Control as='textarea' rows='4' name='desc' placeholder='Description' value={this.state.desc} onChange={e => this.handleChange(e.target.value, 'desc')} />
                     </Form.Group>
                     <ProgressBar animated now={this.state.progress} label={`${this.state.progress}%`} />
-                    <Image src={this.state.imgUrl} alt='post-image' width='300' className='align-center' />
                     <br/>
                     <Button variant='outline-success' className='m-3' onClick={this.updatePost}><FontAwesomeIcon icon={faCheck} /> Update</Button>
                 </Form>

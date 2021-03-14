@@ -1,12 +1,14 @@
 import React from "react";
 import firebase, { firestore } from "../firebase";
-import { Container, Col, Row, Card, Media } from "react-bootstrap";
+import { Container, Col, Row, Card, Media, Image } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "bootstrap/dist/css/bootstrap.min.css";
 import NavBar from "./NavBar";
 import PopularPosts from "./PopularPosts";
 import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import { EmailIcon, EmailShareButton, FacebookIcon, FacebookShareButton, WhatsappIcon, WhatsappShareButton } from "react-share";
+import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 class ArticleView extends React.Component {
   constructor(props) {
@@ -171,6 +173,11 @@ class ArticleView extends React.Component {
   render() {
     return (
       <div>
+        <Helmet>
+        <meta name="description" content={this.state.board.title}/>
+        <meta property="og:image" content={this.state.board.imgUrl} />
+        <meta property="og:url" content={window.location.href}/>
+        </Helmet>
         <NavBar />
         <div className="bg-light article-page">
           <Container className="py-3">
@@ -205,7 +212,7 @@ class ArticleView extends React.Component {
                     </div>
                     <h4 class="article-title">{this.state.board.title}</h4>
                     <span class="article-meta">
-                      {this.state.board.date} / <a href={'/author/'+ this.state.board.aemail}>{this.state.board.adminname}</a>
+                      {this.state.board.date} / <Link to={'/author/'+this.state.board.aemail}>{this.state.board.adminname}</Link>
                     </span>
                     <div className="d-felx">
                       <EmailShareButton  subject={this.state.board.title} url={window.location.href}>
@@ -214,7 +221,7 @@ class ArticleView extends React.Component {
                       <FacebookShareButton quote={this.state.board.title} url={window.location.href}>
                         <FacebookIcon round size={32}/>
                       </FacebookShareButton>&nbsp;
-                      <WhatsappShareButton title={this.state.board.title} url={window.location.href}>
+                      <WhatsappShareButton url={window.location.href}>
                         <WhatsappIcon round size={32} />
                       </WhatsappShareButton>
                     </div>
@@ -271,7 +278,7 @@ class ArticleView extends React.Component {
                     <ol style={{ listStyle: "none", width: "100%" }}>
                       {this.state.comments.map((chat) => (
                         <Media>
-                          <img className='align-self-start mr-3' alt="Comment-img" width={64} height={64} src='/comment-logo.png' />
+                          <Image style={{ width: "64px"}} className='align-self-start mr-3' alt="Comment-img" width={64} height={64} src='/comment-logo.png' />
                           <Media.Body>
                             <h5>{chat.userName}</h5>
                             <p>{chat.Comment}</p>

@@ -48,7 +48,7 @@ class AddAdmin extends Component {
 
   render() {
     return (
-      <Container>
+      <Container className="py-5">
         <Row>
           {this.state.admins.map(admin => (
             <Col md={4}>
@@ -56,8 +56,8 @@ class AddAdmin extends Component {
                 <Card.Body>
                   <Card.Title>Name: {admin.Username}</Card.Title>
                   <Card.Text>Email: {admin.Email}</Card.Text>
-                  <Button variant='light' href={'/admin/'+admin.Username }>View Posts <FontAwesomeIcon icon={faChevronRight}/></Button>
-                  <div className="d-flex">
+                  <a href={"/admin/dashboard/"+admin.Email}>View Posts <FontAwesomeIcon icon={faChevronRight}/></a>
+                  <div className="d-flex mt-3">
                     {admin.ApprovalStatus ? (
                       <Button
                         variant="danger"

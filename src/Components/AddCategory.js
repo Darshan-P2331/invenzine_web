@@ -30,6 +30,7 @@ class AddCategory extends Component {
                 tags: firebase.firestore.FieldValue.arrayUnion(this.state.tag)
             }).then(() => {
                 alert('Added tag successfully')
+                this.props.history.push("/admin/addcategory")
             })
             this.setState({
                 tag: ''
@@ -40,7 +41,10 @@ class AddCategory extends Component {
     removeTag(value){
         firestore.collection('Tags').doc('newstag').update({
             tags: firebase.firestore.FieldValue.arrayRemove(value)
-        }).then(() => alert('Removed tag'))
+        }).then(() => {
+            alert('Removed tag')
+            this.props.history.push("/admin/addcategory")
+        })
     }
 
     render() {
@@ -48,13 +52,16 @@ class AddCategory extends Component {
             <Container>
             <Col>
                 <InputGroup className='mt-5'>
-                    <FormControl placeholder="Add Comments" value={this.state.tag} onChange={e => this.setState({ tag: e.target.value })} onKeyPress={this.handleKeyPress} />
+                    <FormControl placeholder="Add Category" value={this.state.tag} onChange={e => this.setState({ tag: e.target.value })} onKeyPress={this.handleKeyPress} />
                 </InputGroup>
                 {this.state.boards.map((tag) => (
                     <div>
+                    <div className='d-flex justify-content-between my-2'>
                         <Card.Title className='mt-2'>{tag}</Card.Title>
                         <Button variant='danger' onClick={e => this.removeTag(tag)}>Remove</Button>
-                        <hr />
+                        
+                    </div>
+                    <hr />
                     </div>
                 ))}
             </Col>

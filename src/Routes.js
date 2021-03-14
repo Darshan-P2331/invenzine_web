@@ -17,6 +17,7 @@ import Register from './Components/Register'
 import AboutUs from './Components/AboutUs'
 import Footer from './Components/Footer'
 import Author from './Components/Author'
+import Dashboard1 from './Components/Dashboard1'
 
 class Routes extends Component {
     constructor(props) {
@@ -63,7 +64,7 @@ class Routes extends Component {
                                 <Route path="/about" exact component={AboutUs} />
                                 <Route path="/author/:email" exact component={Author} />
                                 <Route path="/search" exact component={Search} />
-                                <Route path={this.state.super? "/admin/:id" : "/admin"} exact component={() => <Dashboard super={this.state.super} />} />
+                                {this.state.super ? <Route path="/admin/dashboard/:aemail" exact component={Dashboard1} /> : <Route path="/admin" exact component={Dashboard} />}
                                 <Route path='/admin/addpost' exact component={AddPost} />
                                 <Route path='/admin/draft' exact component={Draft} />
                                 <Route path='/admin/edit/:id' exact component={editPost} />

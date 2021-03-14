@@ -1,205 +1,99 @@
-[debug] [2020-11-22T07:04:56.829Z] ----------------------------------------------------------------------
-[debug] [2020-11-22T07:04:56.833Z] Command:       C:\Program Files (x86)\nodejs\node.exe C:\Users\Darshan\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
-[debug] [2020-11-22T07:04:56.833Z] CLI Version:   8.16.2
-[debug] [2020-11-22T07:04:56.833Z] Platform:      win32
-[debug] [2020-11-22T07:04:56.833Z] Node Version:  v12.18.2
-[debug] [2020-11-22T07:04:56.836Z] Time:          Sun Nov 22 2020 12:34:56 GMT+0530 (India Standard Time)
-[debug] [2020-11-22T07:04:56.836Z] ----------------------------------------------------------------------
-[debug] [2020-11-22T07:04:56.836Z] 
-[debug] [2020-11-22T07:04:56.845Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2020-11-22T07:04:56.846Z] > authorizing via signed-in user
-[info] 
-     ######## #### ########  ######## ########     ###     ######  ########
-     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
-     ######    ##  ########  ######   ########  #########  ######  ######
-     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
-     ##       #### ##     ## ######## ########  ##     ##  ######  ########
-
-You're about to initialize a Firebase project in this directory:
-
-  D:\Project\invenzine_web
-
-Before we get started, keep in mind:
-
-  * You are initializing in an existing Firebase project directory
-
-[info] 
-=== Project Setup
-[info] 
-[info] First, let's associate this project directory with a Firebase project.
-[info] You can create multiple project aliases by running firebase use --add, 
-[info] but for now we'll just set up a default project.
-[info] 
-[info] i  .firebaserc already has a default project, using techmag-77e4a. 
-[debug] [2020-11-22T07:05:07.855Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
-[debug] [2020-11-22T07:05:07.855Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
- <request body omitted>
-[debug] [2020-11-22T07:05:17.840Z] <<< HTTP RESPONSE 200 {"expires":"Mon, 01 Jan 1990 00:00:00 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","pragma":"no-cache","date":"Sun, 22 Nov 2020 07:05:16 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
-[debug] [2020-11-22T07:05:17.880Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/techmag-77e4a  
- 
-[debug] [2020-11-22T07:05:36.837Z] Server Error. socket hang up
-[debug] [2020-11-22T07:05:36.844Z] FirebaseError: Server Error. socket hang up
-    at Request._callback (C:\Users\Darshan\AppData\Roaming\npm\node_modules\firebase-tools\lib\api.js:32:31)
-    at self.callback (C:\Users\Darshan\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\request\request.js:185:22)
-    at Request.emit (events.js:315:20)
-    at Request.EventEmitter.emit (domain.js:482:12)
-    at Request.onRequestError (C:\Users\Darshan\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\request\request.js:877:8)
-    at ClientRequest.emit (events.js:327:22)
-    at ClientRequest.EventEmitter.emit (domain.js:482:12)
-    at TLSSocket.socketOnEnd (_http_client.js:453:9)
-    at TLSSocket.emit (events.js:327:22)
-    at TLSSocket.EventEmitter.emit (domain.js:482:12)
-    at endReadableNT (_stream_readable.js:1221:12)
-    at processTicksAndRejections (internal/process/task_queues.js:84:21)
-[error] 
-[error] Error: Failed to get Firebase project techmag-77e4a. Please make sure the project exists and your account has permission to access it.
-[debug] [2020-11-22T07:05:40.808Z] ----------------------------------------------------------------------
-[debug] [2020-11-22T07:05:40.811Z] Command:       C:\Program Files (x86)\nodejs\node.exe C:\Users\Darshan\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
-[debug] [2020-11-22T07:05:40.812Z] CLI Version:   8.16.2
-[debug] [2020-11-22T07:05:40.812Z] Platform:      win32
-[debug] [2020-11-22T07:05:40.812Z] Node Version:  v12.18.2
-[debug] [2020-11-22T07:05:40.815Z] Time:          Sun Nov 22 2020 12:35:40 GMT+0530 (India Standard Time)
-[debug] [2020-11-22T07:05:40.816Z] ----------------------------------------------------------------------
-[debug] [2020-11-22T07:05:40.816Z] 
-[debug] [2020-11-22T07:05:40.829Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2020-11-22T07:05:40.830Z] > authorizing via signed-in user
-[info] 
-     ######## #### ########  ######## ########     ###     ######  ########
-     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
-     ######    ##  ########  ######   ########  #########  ######  ######
-     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
-     ##       #### ##     ## ######## ########  ##     ##  ######  ########
-
-You're about to initialize a Firebase project in this directory:
-
-  D:\Project\invenzine_web
-
-Before we get started, keep in mind:
-
-  * You are initializing in an existing Firebase project directory
-
-[info] 
-=== Project Setup
-[info] 
-[info] First, let's associate this project directory with a Firebase project.
-[info] You can create multiple project aliases by running firebase use --add, 
-[info] but for now we'll just set up a default project.
-[info] 
-[info] i  .firebaserc already has a default project, using techmag-77e4a. 
-[debug] [2020-11-22T07:05:47.509Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/techmag-77e4a  
- 
-[debug] [2020-11-22T07:05:54.894Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sun, 22 Nov 2020 07:05:52 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
-[info] 
-=== Hosting Setup
-[info] 
-[info] Your public directory is the folder (relative to your project directory) that
-[info] will contain Hosting assets to be uploaded with firebase deploy. If you
-[info] have a build process for your assets, use your build's output directory.
-[info] 
-[debug] [2020-11-22T07:06:28.748Z] >>> HTTP REQUEST GET https://www.gstatic.com/firebasejs/releases.json  
- 
-[debug] [2020-11-22T07:06:31.296Z] <<< HTTP RESPONSE 200 {"accept-ranges":"bytes","vary":"Accept-Encoding, Origin","content-type":"application/json","cross-origin-resource-policy":"cross-origin","content-length":"1411","date":"Sun, 22 Nov 2020 07:06:30 GMT","expires":"Sun, 22 Nov 2020 07:56:30 GMT","last-modified":"Fri, 20 Nov 2020 01:53:31 GMT","x-content-type-options":"nosniff","server":"sffe","x-xss-protection":"0","cache-control":"public, max-age=3000","age":"0","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\""}
-[debug] [2020-11-22T07:06:47.256Z] ----------------------------------------------------------------------
-[debug] [2020-11-22T07:06:47.260Z] Command:       C:\Program Files (x86)\nodejs\node.exe C:\Users\Darshan\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
-[debug] [2020-11-22T07:06:47.261Z] CLI Version:   8.16.2
-[debug] [2020-11-22T07:06:47.261Z] Platform:      win32
-[debug] [2020-11-22T07:06:47.261Z] Node Version:  v12.18.2
-[debug] [2020-11-22T07:06:47.264Z] Time:          Sun Nov 22 2020 12:36:47 GMT+0530 (India Standard Time)
-[debug] [2020-11-22T07:06:47.264Z] ----------------------------------------------------------------------
-[debug] [2020-11-22T07:06:47.264Z] 
-[debug] [2020-11-22T07:06:47.279Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2020-11-22T07:06:47.280Z] > authorizing via signed-in user
-[debug] [2020-11-22T07:06:47.280Z] [iam] checking project techmag-77e4a for permissions ["firebase.projects.get","firebasehosting.sites.update"]
-[debug] [2020-11-22T07:06:47.287Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/techmag-77e4a:testIamPermissions  
+[debug] [2021-03-14T14:07:58.352Z] ----------------------------------------------------------------------
+[debug] [2021-03-14T14:07:58.354Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\darsh\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2021-03-14T14:07:58.355Z] CLI Version:   9.2.2
+[debug] [2021-03-14T14:07:58.355Z] Platform:      win32
+[debug] [2021-03-14T14:07:58.355Z] Node Version:  v14.15.4
+[debug] [2021-03-14T14:07:58.356Z] Time:          Sun Mar 14 2021 19:37:58 GMT+0530 (India Standard Time)
+[debug] [2021-03-14T14:07:58.356Z] ----------------------------------------------------------------------
+[debug] [2021-03-14T14:07:58.356Z] 
+[debug] [2021-03-14T14:07:58.364Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-03-14T14:07:58.365Z] > authorizing via signed-in user
+[debug] [2021-03-14T14:07:58.365Z] [iam] checking project techmag-77e4a for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2021-03-14T14:07:58.368Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/techmag-77e4a:testIamPermissions  
  {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
-[debug] [2020-11-22T07:06:52.957Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sun, 22 Nov 2020 07:06:50 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=1190","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
-[debug] [2020-11-22T07:06:52.961Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/techmag-77e4a  
- 
-[debug] [2020-11-22T07:07:06.125Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sun, 22 Nov 2020 07:07:04 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-03-14T14:08:00.305Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sun, 14 Mar 2021 14:07:56 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=1130","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-03-14T14:08:00.313Z] > refreshing access token with scopes: []
+[debug] [2021-03-14T14:08:00.314Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-03-14T14:08:00.647Z] <<< HTTP RESPONSE 200 {"date":"Sun, 14 Mar 2021 14:07:57 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","expires":"Mon, 01 Jan 1990 00:00:00 GMT","pragma":"no-cache","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-03-14T14:08:00.667Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/techmag-77e4a [none]
+[debug] [2021-03-14T14:08:01.229Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/techmag-77e4a 200
+[debug] [2021-03-14T14:08:01.230Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/techmag-77e4a {"projectId":"techmag-77e4a","projectNumber":"763598038318","displayName":"TechMag","name":"projects/techmag-77e4a","resources":{"hostingSite":"techmag-77e4a","realtimeDatabaseInstance":"techmag-77e4a","storageBucket":"techmag-77e4a.appspot.com","locationId":"asia-southeast2"},"state":"ACTIVE"}
 [info] 
 [info] === Deploying to 'techmag-77e4a'...
 [info] 
 [info] i  deploying hosting 
-[debug] [2020-11-22T07:07:06.136Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/techmag-77e4a/versions  
+[debug] [2021-03-14T14:08:01.243Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-03-14T14:08:01.244Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-03-14T14:08:01.511Z] <<< HTTP RESPONSE 200 {"expires":"Mon, 01 Jan 1990 00:00:00 GMT","date":"Sun, 14 Mar 2021 14:07:58 GMT","pragma":"no-cache","cache-control":"no-cache, no-store, max-age=0, must-revalidate","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-03-14T14:08:01.529Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/techmag-77e4a/versions  
  {"config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"}}
-[debug] [2020-11-22T07:07:22.410Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sun, 22 Nov 2020 07:07:20 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-03-14T14:08:03.775Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sun, 14 Mar 2021 14:08:00 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
 [info] i  hosting[techmag-77e4a]: beginning deploy... 
-[info] i  hosting[techmag-77e4a]: found 20 files in build 
-[debug] [2020-11-22T07:07:22.469Z] [hosting] hash cache [YnVpbGQ] stored for 20 files
-[debug] [2020-11-22T07:07:22.470Z] [hosting][hash queue][FINAL] {"max":6,"min":0,"avg":0,"active":0,"complete":20,"success":20,"errored":0,"retried":0,"total":20,"elapsed":21}
-[debug] [2020-11-22T07:07:22.470Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/techmag-77e4a/versions/344dab082dbe9b28:populateFiles  
+[info] i  hosting[techmag-77e4a]: found 23 files in build 
+[debug] [2021-03-14T14:08:05.588Z] > refreshing access token with scopes: []
+[debug] [2021-03-14T14:08:05.588Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
  <request body omitted>
-[debug] [2020-11-22T07:07:27.628Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sun, 22 Nov 2020 07:07:26 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
-[debug] [2020-11-22T07:07:27.636Z] [hosting][populate queue][FINAL] {"max":5173,"min":5173,"avg":5173,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":5179}
-[debug] [2020-11-22T07:07:27.637Z] [hosting] uploads queued: 1
-[debug] [2020-11-24T05:36:03.684Z] ----------------------------------------------------------------------
-[debug] [2020-11-24T05:36:03.687Z] Command:       C:\Program Files (x86)\nodejs\node.exe C:\Users\Darshan\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
-[debug] [2020-11-24T05:36:03.687Z] CLI Version:   8.16.2
-[debug] [2020-11-24T05:36:03.687Z] Platform:      win32
-[debug] [2020-11-24T05:36:03.687Z] Node Version:  v12.18.2
-[debug] [2020-11-24T05:36:03.695Z] Time:          Tue Nov 24 2020 11:06:03 GMT+0530 (India Standard Time)
-[debug] [2020-11-24T05:36:03.695Z] ----------------------------------------------------------------------
-[debug] [2020-11-24T05:36:03.695Z] 
-[debug] [2020-11-24T05:36:03.706Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
-[debug] [2020-11-24T05:36:03.746Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2020-11-24T05:36:03.746Z] > authorizing via signed-in user
-[debug] [2020-11-24T05:36:03.747Z] [iam] checking project techmag-77e4a for permissions ["firebase.projects.get","firebasehosting.sites.update"]
-[debug] [2020-11-24T05:36:03.750Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
-[debug] [2020-11-24T05:36:03.750Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
- <request body omitted>
-[debug] [2020-11-24T05:36:04.278Z] <<< HTTP RESPONSE 200 {"expires":"Mon, 01 Jan 1990 00:00:00 GMT","date":"Tue, 24 Nov 2020 05:36:04 GMT","pragma":"no-cache","cache-control":"no-cache, no-store, max-age=0, must-revalidate","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
-[debug] [2020-11-24T05:36:04.291Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/techmag-77e4a:testIamPermissions  
- {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
-[debug] [2020-11-24T05:36:06.395Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
-[debug] [2020-11-24T05:36:06.396Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
-[debug] [2020-11-24T05:36:07.045Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 24 Nov 2020 05:36:06 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=1169","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
-[debug] [2020-11-24T05:36:07.048Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/techmag-77e4a  
- 
-[debug] [2020-11-24T05:36:18.943Z] Server Error. socket hang up
-[debug] [2020-11-24T05:36:18.947Z] FirebaseError: Server Error. socket hang up
-    at Request._callback (C:\Users\Darshan\AppData\Roaming\npm\node_modules\firebase-tools\lib\api.js:32:31)
-    at self.callback (C:\Users\Darshan\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\request\request.js:185:22)
-    at Request.emit (events.js:315:20)
-    at Request.EventEmitter.emit (domain.js:482:12)
-    at Request.onRequestError (C:\Users\Darshan\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\request\request.js:877:8)
-    at ClientRequest.emit (events.js:327:22)
-    at ClientRequest.EventEmitter.emit (domain.js:482:12)
-    at TLSSocket.socketOnEnd (_http_client.js:453:9)
-    at TLSSocket.emit (events.js:327:22)
-    at TLSSocket.EventEmitter.emit (domain.js:482:12)
-    at endReadableNT (_stream_readable.js:1221:12)
-    at processTicksAndRejections (internal/process/task_queues.js:84:21)
-[error] 
-[error] Error: Failed to get Firebase project techmag-77e4a. Please make sure the project exists and your account has permission to access it.
-[debug] [2020-11-24T05:36:32.736Z] ----------------------------------------------------------------------
-[debug] [2020-11-24T05:36:32.739Z] Command:       C:\Program Files (x86)\nodejs\node.exe C:\Users\Darshan\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
-[debug] [2020-11-24T05:36:32.739Z] CLI Version:   8.16.2
-[debug] [2020-11-24T05:36:32.740Z] Platform:      win32
-[debug] [2020-11-24T05:36:32.740Z] Node Version:  v12.18.2
-[debug] [2020-11-24T05:36:32.741Z] Time:          Tue Nov 24 2020 11:06:32 GMT+0530 (India Standard Time)
-[debug] [2020-11-24T05:36:32.742Z] ----------------------------------------------------------------------
-[debug] [2020-11-24T05:36:32.742Z] 
-[debug] [2020-11-24T05:36:32.752Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2020-11-24T05:36:32.752Z] > authorizing via signed-in user
-[debug] [2020-11-24T05:36:32.753Z] [iam] checking project techmag-77e4a for permissions ["firebase.projects.get","firebasehosting.sites.update"]
-[debug] [2020-11-24T05:36:32.757Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/techmag-77e4a:testIamPermissions  
- {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
-[debug] [2020-11-24T05:36:53.813Z] [iam] error while checking permissions, command may fail: FirebaseError: Server Error. connect ETIMEDOUT 172.217.163.138:443
-[debug] [2020-11-24T05:36:53.817Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/techmag-77e4a  
- 
-[debug] [2020-11-24T05:37:33.630Z] Server Error. socket hang up
-[debug] [2020-11-24T05:37:33.635Z] FirebaseError: Server Error. socket hang up
-    at Request._callback (C:\Users\Darshan\AppData\Roaming\npm\node_modules\firebase-tools\lib\api.js:32:31)
-    at self.callback (C:\Users\Darshan\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\request\request.js:185:22)
-    at Request.emit (events.js:315:20)
-    at Request.EventEmitter.emit (domain.js:482:12)
-    at Request.onRequestError (C:\Users\Darshan\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\request\request.js:877:8)
-    at ClientRequest.emit (events.js:327:22)
-    at ClientRequest.EventEmitter.emit (domain.js:482:12)
-    at TLSSocket.socketOnEnd (_http_client.js:453:9)
-    at TLSSocket.emit (events.js:327:22)
-    at TLSSocket.EventEmitter.emit (domain.js:482:12)
-    at endReadableNT (_stream_readable.js:1221:12)
-    at processTicksAndRejections (internal/process/task_queues.js:84:21)
-[error] 
-[error] Error: Failed to get Firebase project techmag-77e4a. Please make sure the project exists and your account has permission to access it.
+[debug] [2021-03-14T14:08:05.589Z] [hosting] hash cache [YnVpbGQ] stored for 23 files
+[debug] [2021-03-14T14:08:05.590Z] [hosting][hash queue][FINAL] {"max":1770,"min":4,"avg":103,"active":0,"complete":23,"success":23,"errored":0,"retried":0,"total":23,"elapsed":1780}
+[debug] [2021-03-14T14:08:05.902Z] <<< HTTP RESPONSE 200 {"pragma":"no-cache","cache-control":"no-cache, no-store, max-age=0, must-revalidate","date":"Sun, 14 Mar 2021 14:08:02 GMT","expires":"Mon, 01 Jan 1990 00:00:00 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-03-14T14:08:05.920Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/sites/techmag-77e4a/versions/10c806c557cc554e:populateFiles [none]
+[debug] [2021-03-14T14:08:05.921Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/sites/techmag-77e4a/versions/10c806c557cc554e:populateFiles {"files":{"/background.png":"333a8182422db372e62958ab02cc9800e30c7350e9bc9aaf5d2d56b7be546857","/circuit.mp4":"a24f696ec008080741648b15ea4b9a714c46f76dd23a6dd290ef993b6e923d09","/comment-logo.png":"ce4488303911b54cf3eb418621f298590498c5677cec42178f5147f9a92e3985","/favicon.ico":"d96ddbc4933b04e12c738ab39f469573143949ca2c39eda0a49d16f83d40c319","/manifest.json":"5c997de1364b8be939319fa9209abd77f2caf7f8844999a9e2e9173f844e7840","/profile.jpg":"9bf443bffbd688920ae4bff1a98ed4484c7dc6a16ec9ce4acf7738a423a1d736","/robots.txt":"b2090cf9761ef60aa06e4fab97679bd43dfa5e5df073701ead5879d7c68f1ec5","/upload.png":"3232190ce66772d0b1b863f077c1687e3bcff9a01fafe2369f120cc063a7330d","/asset-manifest.json":"79843d619167c22b21e021f46c62564b3a2af3105ce2f7e623cedb14864ccd91","/index.html":"0f9732670b7d11785c21f2a4df515d60d01cdae0efff64d1094458e0af5be681","/precache-manifest.0a3496c783aed4f03d0948ad02a94fa2.js":"6687b0452a486705841d0e065c2c82b9115c0b14a19e7e8f634f09d9040620b6","/service-worker.js":"ef6956bfb2ee6b93dc4e06719d01cbce891f6cc4264f4b2503d84c9b1927aa36","/static/css/main.6864499a.chunk.css":"de49ac10821e5f782ddbf4ee1f7162b27a406e9b99e6a161f1529ec552d5ec13","/static/css/main.6864499a.chunk.css.map":"9f17067b53cde8197baa10915b9a749d2447f13ff826241d74f25b31b1a8b5f3","/static/js/2.d34cbae7.chunk.js.LICENSE.txt":"c98d5f47ae0d1bdbee3929102dd864b12ee709aff047a9d59ce63fa628e88423","/static/js/runtime-main.c27046d2.js":"0f4b90860194f7a8ee37fbbc6185c1b947b44265ad48d300a9423cbe56b38be3","/static/js/runtime-main.c27046d2.js.map":"4941a9b4c81fac587da3737fc6d5fc0def5304cf4318c436b19e5d4c53082086","/static/js/main.6949a837.chunk.js":"5ba5f284461e1970dad657060e9088a757854828100f54297459a3dc1912a9f2","/static/css/2.d9ad5f5c.chunk.css":"1f408e0dc30fba2ca11700f368db0afdda4d75ba7c069a80d392bf4270e02ea9","/static/js/main.6949a837.chunk.js.map":"26a7d4dae35c12ee5c4e9cf42b5e13b03cb7648a295543b9b4f7c51c5b6c722c","/static/css/2.d9ad5f5c.chunk.css.map":"4d35dbc8503dffbd02bb716c5289a67783c75cfe1cab734d541cc786c6c0e665","/static/js/2.d34cbae7.chunk.js":"d3415531c526da2c9e2f36bf1d9ff8ad7a184d9f7a50e2de580f569c48932c8b","/static/js/2.d34cbae7.chunk.js.map":"305abb46e193a0eae23f46b97cc4856970a931f0c4997c26281e2a042e212543"}}
+[debug] [2021-03-14T14:08:08.083Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/sites/techmag-77e4a/versions/10c806c557cc554e:populateFiles 200
+[debug] [2021-03-14T14:08:08.083Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/sites/techmag-77e4a/versions/10c806c557cc554e:populateFiles {"uploadRequiredHashes":["79843d619167c22b21e021f46c62564b3a2af3105ce2f7e623cedb14864ccd91","6687b0452a486705841d0e065c2c82b9115c0b14a19e7e8f634f09d9040620b6","305abb46e193a0eae23f46b97cc4856970a931f0c4997c26281e2a042e212543","ef6956bfb2ee6b93dc4e06719d01cbce891f6cc4264f4b2503d84c9b1927aa36","5ba5f284461e1970dad657060e9088a757854828100f54297459a3dc1912a9f2","26a7d4dae35c12ee5c4e9cf42b5e13b03cb7648a295543b9b4f7c51c5b6c722c","0f9732670b7d11785c21f2a4df515d60d01cdae0efff64d1094458e0af5be681","d3415531c526da2c9e2f36bf1d9ff8ad7a184d9f7a50e2de580f569c48932c8b"],"uploadUrl":"https://upload-firebasehosting.googleapis.com/upload/sites/techmag-77e4a/versions/10c806c557cc554e/files"}
+[debug] [2021-03-14T14:08:08.090Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/techmag-77e4a/versions/10c806c557cc554e/files/79843d619167c22b21e021f46c62564b3a2af3105ce2f7e623cedb14864ccd91 [none]
+[debug] [2021-03-14T14:08:08.090Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/techmag-77e4a/versions/10c806c557cc554e/files/79843d619167c22b21e021f46c62564b3a2af3105ce2f7e623cedb14864ccd91 [stream]
+[debug] [2021-03-14T14:08:08.093Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/techmag-77e4a/versions/10c806c557cc554e/files/6687b0452a486705841d0e065c2c82b9115c0b14a19e7e8f634f09d9040620b6 [none]
+[debug] [2021-03-14T14:08:08.094Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/techmag-77e4a/versions/10c806c557cc554e/files/6687b0452a486705841d0e065c2c82b9115c0b14a19e7e8f634f09d9040620b6 [stream]
+[debug] [2021-03-14T14:08:08.096Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/techmag-77e4a/versions/10c806c557cc554e/files/305abb46e193a0eae23f46b97cc4856970a931f0c4997c26281e2a042e212543 [none]
+[debug] [2021-03-14T14:08:08.096Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/techmag-77e4a/versions/10c806c557cc554e/files/305abb46e193a0eae23f46b97cc4856970a931f0c4997c26281e2a042e212543 [stream]
+[debug] [2021-03-14T14:08:08.099Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/techmag-77e4a/versions/10c806c557cc554e/files/ef6956bfb2ee6b93dc4e06719d01cbce891f6cc4264f4b2503d84c9b1927aa36 [none]
+[debug] [2021-03-14T14:08:08.099Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/techmag-77e4a/versions/10c806c557cc554e/files/ef6956bfb2ee6b93dc4e06719d01cbce891f6cc4264f4b2503d84c9b1927aa36 [stream]
+[debug] [2021-03-14T14:08:08.101Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/techmag-77e4a/versions/10c806c557cc554e/files/5ba5f284461e1970dad657060e9088a757854828100f54297459a3dc1912a9f2 [none]
+[debug] [2021-03-14T14:08:08.101Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/techmag-77e4a/versions/10c806c557cc554e/files/5ba5f284461e1970dad657060e9088a757854828100f54297459a3dc1912a9f2 [stream]
+[debug] [2021-03-14T14:08:08.103Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/techmag-77e4a/versions/10c806c557cc554e/files/26a7d4dae35c12ee5c4e9cf42b5e13b03cb7648a295543b9b4f7c51c5b6c722c [none]
+[debug] [2021-03-14T14:08:08.103Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/techmag-77e4a/versions/10c806c557cc554e/files/26a7d4dae35c12ee5c4e9cf42b5e13b03cb7648a295543b9b4f7c51c5b6c722c [stream]
+[debug] [2021-03-14T14:08:08.105Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/techmag-77e4a/versions/10c806c557cc554e/files/0f9732670b7d11785c21f2a4df515d60d01cdae0efff64d1094458e0af5be681 [none]
+[debug] [2021-03-14T14:08:08.105Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/techmag-77e4a/versions/10c806c557cc554e/files/0f9732670b7d11785c21f2a4df515d60d01cdae0efff64d1094458e0af5be681 [stream]
+[debug] [2021-03-14T14:08:08.107Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/techmag-77e4a/versions/10c806c557cc554e/files/d3415531c526da2c9e2f36bf1d9ff8ad7a184d9f7a50e2de580f569c48932c8b [none]
+[debug] [2021-03-14T14:08:08.108Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/techmag-77e4a/versions/10c806c557cc554e/files/d3415531c526da2c9e2f36bf1d9ff8ad7a184d9f7a50e2de580f569c48932c8b [stream]
+[debug] [2021-03-14T14:08:08.109Z] [hosting][populate queue][FINAL] {"max":2503,"min":2503,"avg":2503,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":2522}
+[debug] [2021-03-14T14:08:08.110Z] [hosting] uploads queued: 8
+[debug] [2021-03-14T14:08:15.111Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/techmag-77e4a/versions/10c806c557cc554e/files/79843d619167c22b21e021f46c62564b3a2af3105ce2f7e623cedb14864ccd91 200
+[debug] [2021-03-14T14:08:15.112Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/techmag-77e4a/versions/10c806c557cc554e/files/79843d619167c22b21e021f46c62564b3a2af3105ce2f7e623cedb14864ccd91 [stream]
+[debug] [2021-03-14T14:08:15.311Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/techmag-77e4a/versions/10c806c557cc554e/files/6687b0452a486705841d0e065c2c82b9115c0b14a19e7e8f634f09d9040620b6 200
+[debug] [2021-03-14T14:08:15.311Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/techmag-77e4a/versions/10c806c557cc554e/files/6687b0452a486705841d0e065c2c82b9115c0b14a19e7e8f634f09d9040620b6 [stream]
+[debug] [2021-03-14T14:08:15.376Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/techmag-77e4a/versions/10c806c557cc554e/files/ef6956bfb2ee6b93dc4e06719d01cbce891f6cc4264f4b2503d84c9b1927aa36 200
+[debug] [2021-03-14T14:08:15.376Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/techmag-77e4a/versions/10c806c557cc554e/files/ef6956bfb2ee6b93dc4e06719d01cbce891f6cc4264f4b2503d84c9b1927aa36 [stream]
+[debug] [2021-03-14T14:08:16.076Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/techmag-77e4a/versions/10c806c557cc554e/files/0f9732670b7d11785c21f2a4df515d60d01cdae0efff64d1094458e0af5be681 200
+[debug] [2021-03-14T14:08:16.077Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/techmag-77e4a/versions/10c806c557cc554e/files/0f9732670b7d11785c21f2a4df515d60d01cdae0efff64d1094458e0af5be681 [stream]
+[debug] [2021-03-14T14:08:19.866Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/techmag-77e4a/versions/10c806c557cc554e/files/5ba5f284461e1970dad657060e9088a757854828100f54297459a3dc1912a9f2 200
+[debug] [2021-03-14T14:08:19.866Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/techmag-77e4a/versions/10c806c557cc554e/files/5ba5f284461e1970dad657060e9088a757854828100f54297459a3dc1912a9f2 [stream]
+[debug] [2021-03-14T14:08:38.507Z] [uploadQueue] Retrying task 26a7d4dae35c12ee5c4e9cf42b5e13b03cb7648a295543b9b4f7c51c5b6c722c
+[debug] [2021-03-14T14:08:38.509Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/techmag-77e4a/versions/10c806c557cc554e/files/26a7d4dae35c12ee5c4e9cf42b5e13b03cb7648a295543b9b4f7c51c5b6c722c [none]
+[debug] [2021-03-14T14:08:38.509Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/techmag-77e4a/versions/10c806c557cc554e/files/26a7d4dae35c12ee5c4e9cf42b5e13b03cb7648a295543b9b4f7c51c5b6c722c [stream]
+[debug] [2021-03-14T14:08:38.514Z] [uploadQueue] Retrying task d3415531c526da2c9e2f36bf1d9ff8ad7a184d9f7a50e2de580f569c48932c8b
+[debug] [2021-03-14T14:08:38.517Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/techmag-77e4a/versions/10c806c557cc554e/files/d3415531c526da2c9e2f36bf1d9ff8ad7a184d9f7a50e2de580f569c48932c8b [none]
+[debug] [2021-03-14T14:08:38.518Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/techmag-77e4a/versions/10c806c557cc554e/files/d3415531c526da2c9e2f36bf1d9ff8ad7a184d9f7a50e2de580f569c48932c8b [stream]
+[debug] [2021-03-14T14:09:09.346Z] [uploadQueue] Retrying task 26a7d4dae35c12ee5c4e9cf42b5e13b03cb7648a295543b9b4f7c51c5b6c722c
+[debug] [2021-03-14T14:09:09.348Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/techmag-77e4a/versions/10c806c557cc554e/files/26a7d4dae35c12ee5c4e9cf42b5e13b03cb7648a295543b9b4f7c51c5b6c722c [none]
+[debug] [2021-03-14T14:09:09.348Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/techmag-77e4a/versions/10c806c557cc554e/files/26a7d4dae35c12ee5c4e9cf42b5e13b03cb7648a295543b9b4f7c51c5b6c722c [stream]
+[debug] [2021-03-14T14:09:09.351Z] [uploadQueue] Retrying task d3415531c526da2c9e2f36bf1d9ff8ad7a184d9f7a50e2de580f569c48932c8b
+[debug] [2021-03-14T14:09:09.352Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/techmag-77e4a/versions/10c806c557cc554e/files/d3415531c526da2c9e2f36bf1d9ff8ad7a184d9f7a50e2de580f569c48932c8b [none]
+[debug] [2021-03-14T14:09:09.353Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/techmag-77e4a/versions/10c806c557cc554e/files/d3415531c526da2c9e2f36bf1d9ff8ad7a184d9f7a50e2de580f569c48932c8b [stream]
+[debug] [2021-03-14T14:09:40.965Z] [uploadQueue] Retrying task 26a7d4dae35c12ee5c4e9cf42b5e13b03cb7648a295543b9b4f7c51c5b6c722c
+[debug] [2021-03-14T14:09:40.967Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/techmag-77e4a/versions/10c806c557cc554e/files/26a7d4dae35c12ee5c4e9cf42b5e13b03cb7648a295543b9b4f7c51c5b6c722c [none]
+[debug] [2021-03-14T14:09:40.967Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/techmag-77e4a/versions/10c806c557cc554e/files/26a7d4dae35c12ee5c4e9cf42b5e13b03cb7648a295543b9b4f7c51c5b6c722c [stream]
+[debug] [2021-03-14T14:09:40.970Z] [uploadQueue] Retrying task d3415531c526da2c9e2f36bf1d9ff8ad7a184d9f7a50e2de580f569c48932c8b
+[debug] [2021-03-14T14:09:40.971Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/techmag-77e4a/versions/10c806c557cc554e/files/d3415531c526da2c9e2f36bf1d9ff8ad7a184d9f7a50e2de580f569c48932c8b [none]
+[debug] [2021-03-14T14:09:40.971Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/techmag-77e4a/versions/10c806c557cc554e/files/d3415531c526da2c9e2f36bf1d9ff8ad7a184d9f7a50e2de580f569c48932c8b [stream]
+[debug] [2021-03-14T14:10:08.247Z] [uploadQueue] Retrying task 305abb46e193a0eae23f46b97cc4856970a931f0c4997c26281e2a042e212543
+[debug] [2021-03-14T14:10:08.248Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/techmag-77e4a/versions/10c806c557cc554e/files/305abb46e193a0eae23f46b97cc4856970a931f0c4997c26281e2a042e212543 [none]
+[debug] [2021-03-14T14:10:08.249Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/techmag-77e4a/versions/10c806c557cc554e/files/305abb46e193a0eae23f46b97cc4856970a931f0c4997c26281e2a042e212543 [stream]
+[debug] [2021-03-14T14:10:14.191Z] [uploadQueue] Retrying task 26a7d4dae35c12ee5c4e9cf42b5e13b03cb7648a295543b9b4f7c51c5b6c722c
+[debug] [2021-03-14T14:10:14.193Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/techmag-77e4a/versions/10c806c557cc554e/files/26a7d4dae35c12ee5c4e9cf42b5e13b03cb7648a295543b9b4f7c51c5b6c722c [none]
+[debug] [2021-03-14T14:10:14.193Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/techmag-77e4a/versions/10c806c557cc554e/files/26a7d4dae35c12ee5c4e9cf42b5e13b03cb7648a295543b9b4f7c51c5b6c722c [stream]
+[debug] [2021-03-14T14:10:14.196Z] [uploadQueue] Retrying task d3415531c526da2c9e2f36bf1d9ff8ad7a184d9f7a50e2de580f569c48932c8b
+[debug] [2021-03-14T14:10:14.197Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/techmag-77e4a/versions/10c806c557cc554e/files/d3415531c526da2c9e2f36bf1d9ff8ad7a184d9f7a50e2de580f569c48932c8b [none]
+[debug] [2021-03-14T14:10:14.197Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/techmag-77e4a/versions/10c806c557cc554e/files/d3415531c526da2c9e2f36bf1d9ff8ad7a184d9f7a50e2de580f569c48932c8b [stream]

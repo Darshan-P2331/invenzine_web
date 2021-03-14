@@ -1,4 +1,4 @@
-import { faChevronDown, faUserCircle } from "@fortawesome/free-solid-svg-icons";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { Component } from "react";
 import {
@@ -7,6 +7,7 @@ import {
   CardColumns,
   Col,
   Container,
+  Image,
   Row,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -133,6 +134,11 @@ export default class Author extends Component {
   }
 
   componentDidMount() {
+    firestore.collection('News').where("aemail","==",this.email).onSnapshot(querysnapshot => {
+      this.setState({
+          totalPost: querysnapshot.docs.length
+      })
+  })
     this.getInfo();
   }
 
@@ -144,19 +150,25 @@ export default class Author extends Component {
           <Row>
             <Col lg={4}>
               <div className="justify-content-center pt-5 mt-4 flex-column text-center">
-                <FontAwesomeIcon icon={faUserCircle} size="8x" color="yellow" />
+              <div className="custom-file-upload">
+                    <div className="img-wrap">
+                    <Image src={ this.state.details.imgurl || "/profile.jpg"} />
+                    </div>
+                    </div>
                 <Card.Title>{this.state.details.Username}</Card.Title>
-                <p className='text-muted'>{this.state.totalfollowers}</p>
+                <Card.Text>{this.state.totalPost} Posts</Card.Text>
+                <br/>
+                <p className='text-muted'>{this.state.totalfollowers} Followers</p>
                 <Button variant={this.state.subscribed? "secondary" : "primary"} onClick={this.Subscribe}>{this.state.subscribed? "UnSubscribe" : "Subscribe"}</Button>
               </div>
             </Col>
             <Col lg={8}>
-              <Row>
+              <Row className="px-3">
                 <CardColumns className="py-5">
                   {this.state.boards.map((board) => (
-                    <Card>
+                    <Card style={{width: "320px"}}>
                       <Link to={'/articleview/'+ board.key} style={{textDecoration: 'none', color: '#000'}}>
-                      <Card.Img src={board.imgUrl} />
+                      <Card.Img src={board.imgUrl} style={{width: "318px",objectFit: "cover"}} />
                       <Card.Body>
                         <Card.Title>{board.title}</Card.Title>
                       </Card.Body>

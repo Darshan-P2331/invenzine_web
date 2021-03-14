@@ -53,6 +53,7 @@ class Register extends Component {
             IDProof: this.state.IDProof,
             Occupation: this.state.Occupation,
             ApprovalStatus: false,
+            photoUrl: "",
             Subscribers: []
         }).then(() => {
             alert('Submited')
@@ -62,7 +63,7 @@ class Register extends Component {
 
     render() {
         return (
-            <Container>
+            <Container className="py-4">
                 {!this.state.applied ?
                     <Form>
                         <Form.Group controlId="formBasicEmail">
@@ -86,7 +87,7 @@ class Register extends Component {
                         </Form.Group>
                         <Form.Group controlId="formPhone">
                             <Form.Label>Occupation</Form.Label>
-                            <Form.Control placeholder="Occupation" value={this.state.Occupation} onChange={e => this.handleChange(e.target.value, 'Occupation')} />
+                            <Form.Control placeholder="Occupation" pattern="[A-Z][a-z]" value={this.state.Occupation} onChange={e => this.handleChange(e.target.value, 'Occupation')} />
                         </Form.Group>
                         <Form.Group controlId="Adress">
                             <Form.Label>Address</Form.Label>
